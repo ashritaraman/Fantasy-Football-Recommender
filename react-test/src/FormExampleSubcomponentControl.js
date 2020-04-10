@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Form } from 'semantic-ui-react'
+import Dropdown from './Dropdown.js'
+
 
 const options = [
   { key: 'm', text: 'Male', value: 'male' },
@@ -9,6 +11,8 @@ const options = [
 
 class FormExampleSubcomponentControl extends Component {
   state = {}
+
+
 
   handleChange = (e, { value }) => this.setState({ value })
 
@@ -25,7 +29,11 @@ class FormExampleSubcomponentControl extends Component {
             options={options}
             placeholder='Gender'
           />
+          <Form.Field label="Choose 5 Players" control={Dropdown} />
+
         </Form.Group>
+
+
         <Form.Group inline>
           <label>Size</label>
           <Form.Radio
