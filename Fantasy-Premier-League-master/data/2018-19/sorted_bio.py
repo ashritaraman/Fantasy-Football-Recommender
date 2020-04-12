@@ -19,13 +19,13 @@ lst_fwd = []
 length = len(df_list)
 i=0 
 while i<length:
-    if df_list[i][0] == 0: 
-        lst_gk.append(df_regular_list[i])
     if df_list[i][0] == 1: 
-        lst_def.append(df_regular_list[i])
+        lst_gk.append(df_regular_list[i])
     if df_list[i][0] == 2: 
-        lst_mid.append(df_regular_list[i])
+        lst_def.append(df_regular_list[i])
     if df_list[i][0] == 3: 
+        lst_mid.append(df_regular_list[i])
+    if df_list[i][0] == 4: 
         lst_fwd.append(df_regular_list[i])
     i=i+1
 
