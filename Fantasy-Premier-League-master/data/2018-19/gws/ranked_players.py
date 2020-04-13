@@ -46,7 +46,7 @@ def rank_players(gw):
     elif gw==3: 
         pass
     else:
-        csv_names = [ "gw"+str(gw-1)+".csv","gw"+str(gw-2)+".csv","gw"+str(gw-2)+".csv"]
+        csv_names = [ "gw"+str(gw-1)+".csv","gw"+str(gw-2)+".csv","gw"+str(gw-3)+".csv"]
         name_count = 0
         for name in csv_names:
             df = pd.read_csv(name, usecols = ['name','ict_index'], encoding = "cp1252")
@@ -107,7 +107,7 @@ def pos_ranked_players (pos, gw):
     for elem in player_id_list:
         lst_temp = []
         lst_temp.append(elem)
-        if lst_temp in df_list_gk:
+        if lst_temp in df_list_def:
             def_ranked.append(lst_temp[0])
     
     df_mid = pd.read_csv('mid.csv', usecols = ['player_id'])
@@ -133,6 +133,7 @@ def pos_ranked_players (pos, gw):
         return mid_ranked
     if pos==4:
         return fwd_ranked
+    
 
 # Generates a ranked player-name list from ranked player id-list
 def player_name_gen (ranked_id_list):
@@ -162,5 +163,7 @@ def player_name_gen (ranked_id_list):
 def delete_dups (l):
     return list( dict.fromkeys(l))
 
-names_list = delete_dups(player_name_gen(pos_ranked_players(4,19)))
-print(names_list)
+# names_list = delete_dups(player_name_gen(pos_ranked_players(4,19)))
+(pos_ranked_players(2,35))
+# print(pos_ranked_players(1,35))
+# print("Fuck!")
