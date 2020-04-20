@@ -5,15 +5,13 @@ import csv
 from pandas import DataFrame
 
 gw = 35
-cost_lim = 1000
 ppt = 3 
 g = 2
 d = 5
 m = 5
 f = 3
 
-# def extract_cost(team):
-#     pass
+
 
 gk_lst = ranked_players.delete_dups(ranked_players.pos_ranked_players(1,gw))
 def_lst = ranked_players.delete_dups(ranked_players.pos_ranked_players(2,gw))
@@ -115,21 +113,104 @@ def team_modif_ppt(team,g,d,m,f):
     return ([team,team_list,[g,d,m,f]])
   
 
-def team_modif_ppt_rec(team,team_list,g,d,m,f):
-    i=0
-    print(team_list)
-    while(i<len(team_list)):
-        if (team_list[i]>3):
-            [team,team_list,[g,d,m,f]] = team_modif_ppt(team,team_list,g,d,m,f)
-            i=0
-        else:
-            i=i+1
+# def team_modif_ppt_rec(team,team_list,g,d,m,f):
+#     i=0
+#     while(i<len(team_list)):
+#         if (team_list[i]>3):
+#             [team,team_list,[g,d,m,f]] = team_modif_ppt(team,team_list,g,d,m,f)
+#             i=0
+#         else:
+#             i=i+1
+
+#     return team
+
+def calculate_cost(team,gw):
+    cost = 0
+    csv_name = "gw"+str(gw)+".csv"
+    df = pd.read_csv(csv_name, usecols = ['name','value'], encoding = "cp1252")
+    df_list = df.values.tolist()
+    for player_id in team:
+        for elem in df_list:
+            if ranked_players.name_parse(elem[0]) == player_id:
+                cost = cost+ elem[1]
+    return cost
+
+
+
+def team_modif_cost(team,g,d,m,f):
+    cost = calculate_cost(team,gw)
+    while cost > 1000 :
+        team_cost_list = []
+        cost_list = []
+        csv_name = "gw"+str(gw)+".csv"
+        df = pd.read_csv(csv_name, usecols = ['name','value'], encoding = "cp1252")
+        df_list = df.values.tolist()
+        for elem in df_list:
+            if ranked_players.name_parse(elem[0]) in team:
+                team_cost_list.append(elem)
+                cost_list.append(elem[1])
+        cost_list = ranked_players.sort_list(cost_list)
+        price = cost_list[0]
+        for tup in team_cost_list:
+                if tup[1] == price:
+                    player_id = ranked_players.name_parse(tup[0])
+
+        if player_id in def_lst:
+            defender_new = def_lst[d]
+            d=d+1
+            team.append(defender_new)
+            team.remove(player_id)
+
+
+        elif player_id in gk_lst:
+            gk_new = gk_lst[g]
+            g=g+1
+            team.append(gk_new)
+            team.remove(player_id)
+        
+        elif player_id in mid_lst:
+            mid_new = mid_lst[m]
+            m=m+1
+            team.append(mid_new)
+            team.remove(player_id)
+        
+        elif player_id in fwd_lst:
+            fwd_new = fwd_lst[f]
+            f=f+1
+            team.append(fwd_new)
+            team.remove(player_id)
+
+        cost = calculate_cost(team,gw)
 
     return team
 
 
-team1 = form_team_basic(35)
-# print(team1)
-team1 = team_modif_ppt(team1,g,d,m,f)
-team2 = team_modif_ppt_rec(team1[0],team1[1],g,d,m,f)
-print(team2)
+def ppt_cond_violation(team_list):   #true if condition is violated, false it ppt is fine
+    for elem in team_list:
+        if elem>3:
+            return True
+    return False
+
+# This funtion combines the two restrictions of ppt and cost
+# and returns a team which satisfies both conditions
+def combined_conditions(team,team_list,cost,g,d,m,f):
+    while (ppt_cond_violation(team_list)):
+        team = team_modif_ppt(team,g,d,m,f)[0]
+        team_list = team_modif_ppt(team,g,d,m,f)[1]
+        [g,d,m,f] = team_modif_ppt(team,g,d,m,f)[2]
+        cost = calculate_cost(team,gw)
+        while cost>1000:
+            team = team_modif_cost(team,g,d,m,f)
+            cost = calculate_cost(team,gw)
+        
+        
+            
+    return team
+
+cost = 2000
+team = form_team_basic(gw)
+[team, team_list, [g,d,m,f]] = team_modif_ppt(team,g,d,m,f)
+team = combined_conditions(team,team_list,cost,g,d,m,f)
+print(team)
+team = ranked_players.player_name_gen(team)
+print(team)

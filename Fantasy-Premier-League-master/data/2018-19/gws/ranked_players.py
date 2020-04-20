@@ -165,5 +165,3 @@ def delete_dups (l):
 
 # names_list = delete_dups(player_name_gen(pos_ranked_players(4,19)))
 (pos_ranked_players(2,35))
-# print(pos_ranked_players(1,35))
-# print("Fuck!")
