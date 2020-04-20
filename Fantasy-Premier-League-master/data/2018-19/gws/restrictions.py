@@ -211,6 +211,5 @@ cost = 2000
 team = form_team_basic(gw)
 [team, team_list, [g,d,m,f]] = team_modif_ppt(team,g,d,m,f)
 team = combined_conditions(team,team_list,cost,g,d,m,f)
-print(team)
-team = ranked_players.player_name_gen(team)
-print(team)
+# team = ranked_players.player_name_gen(team)
+# print(team)
