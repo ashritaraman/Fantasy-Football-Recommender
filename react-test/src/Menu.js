@@ -13,11 +13,12 @@ export default class MenuExampleStackable extends Component {
       <Sticky>
         <Menu stackable>
 
+
           <Menu.Item
             name='sign-in'
             active={activeItem === 'sign-in'}
           >
-            Fantasy Football Recommender
+            Fantasy Football Predictor
         </Menu.Item>
         </Menu>
       </Sticky>
