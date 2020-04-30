@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { Table, Pagination, Segment } from 'semantic-ui-react'
+import { Form, Table, Pagination, Segment, Grid, GridColumn, Header } from 'semantic-ui-react'
 import PlayerBio from './players_bio.json'
 
 
@@ -13,9 +13,9 @@ export default class PlayerTable extends Component {
     begin: 0,
     end: 10,
     pageNumber: 1
-
-
   }
+
+
 
   handleSort = (clickedColumn) => () => {
     const { column, data, direction, begin, end } = this.state
@@ -53,24 +53,29 @@ export default class PlayerTable extends Component {
 
     return (
       <Segment basic padded='very'>
+        <Form>
+          <Grid columns={3} padded>
+            <Grid.Column></Grid.Column>
+            <Grid.Column>
+              <Form.Field>
+                <label>Choose a Game Week Between 1-38</label>
+                <input type="number" placeholder='1' min={1} max={38} />
+              </Form.Field></Grid.Column>
+            <Grid.Column></Grid.Column>
+          </Grid>
+        </Form>
         <Table sortable celled fixed>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell
-                sorted={column === 'Position' ? direction : null}
-                onClick={this.handleSort('Position')}
-              >
+              <Table.HeaderCell>
                 Position
             </Table.HeaderCell>
               <Table.HeaderCell
-                sorted={column === 'name' ? direction : null}
-                onClick={this.handleSort('name')}
               >
                 Name
             </Table.HeaderCell>
               <Table.HeaderCell
-                sorted={column === 'team' ? direction : null}
-                onClick={this.handleSort('team')}
+
               >
                 Team
             </Table.HeaderCell>

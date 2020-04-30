@@ -10,7 +10,7 @@ import {
 } from 'semantic-ui-react';
 import { Container } from 'semantic-ui-react';
 import Head from './Head';
-import FormExampleSubcomponentControl from './FormExampleSubcomponentControl';
+import FormEx from './FormEx';
 import Menu from './Menu';
 import ProjectDescription from './ProjectDescription'
 import PlayerTable from './PlayerTable'
@@ -23,7 +23,7 @@ function App() {
       <Head />
       <ProjectDescription />
       <PlayerTable />
-      <FormExampleSubcomponentControl />
+      <FormEx />
       {/* </Grid> */}
     </Fragment>
   );
