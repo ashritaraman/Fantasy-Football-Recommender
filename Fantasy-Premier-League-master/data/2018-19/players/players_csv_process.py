@@ -9,7 +9,6 @@ gw = 6
 player_bio_df = pd.read_csv("player_bio.csv", usecols= ['Position','first_name','second_name','player_id'])
 player_bio_df_list = player_bio_df.values.tolist()
 
-print(player_bio_df_list)
 df_list = [] 
 
 weightages = [0.4,0.3,0.15,0.1,0.05]
@@ -33,7 +32,6 @@ def order_rows(gw_df_list):
     return gw_df_list
 
 def make_big_csv(gw):
-
     for elem in player_bio_df_list:
         folder_name = "" + elem[1] + "_" + elem[2] + "_" + str(elem[3])
         player_pos = elem[0]
@@ -45,7 +43,9 @@ def make_big_csv(gw):
         gw_df_list = remove_rows(gw_df_list)
         gw_df_list = order_rows(gw_df_list)
 
-        while gw<len(gw_df_list):  
+        game_week = gw
+        while game_week<len(gw_df_list):  
+            # print('curr player', elem) 
             lst_1 = [] 
             lst_2 = []
             lst_3 = []
@@ -65,7 +65,7 @@ def make_big_csv(gw):
                     lst_2 = row
                 if row[10] == gw-1:
                     lst_1 = row
-                
+
             temp_lst = [] 
             # print(gw)
             # print(folder_name)
@@ -76,12 +76,12 @@ def make_big_csv(gw):
                 i=i+1
 
             temp_lst.append(player_pos)    
-            temp_lst.append(gw)
+            temp_lst.append(game_week)
             temp_lst.append(final_total_points)
             df_list.append(temp_lst)
             
             
-            gw = gw+1
+            game_week = game_week+1
     return df_list
 
 
