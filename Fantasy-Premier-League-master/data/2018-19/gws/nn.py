@@ -33,13 +33,9 @@ gw = 6
 weightages = [0.4,0.3,0.15,0.1,0.05]
 
 def make_training_csv(gw):
-    gw_1 = [] 
-    gw_2 = [] 
-    gw_3 = []
-    gw_4 = [] 
-    gw_5 = [] 
+    df_list = []
     while gw<39:
-        for i in range(gw-5,gw):
+        for week in range(gw-5,gw):
             gw_csv_name = "gw" + str(i) +".csv"
             gw_stats = pd.read_csv(gw_csv_name, usecols= ['Name','Assists','big_chances_created','clean_sheets','clearances_blocks_interceptions','dribbles','errors_leading_to_goal','ict_index','key_passes','penalties_missed','penalties_saved','game_week','Total Points'],encoding = "cp1252")
 
