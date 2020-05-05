@@ -10,7 +10,10 @@ def_lst = rp.def_lst
 mid_lst = rp.mid_lst 
 fwd_lst = rp.fwd_lst
 
+
+
 def random_team_score_calculator():
+    cost = 0
     for i in range(100):
         g1 = random.randint(0,len(gk_lst)-1)
         g2 = random.randint(0,len(gk_lst)-1)
@@ -54,8 +57,9 @@ def random_team_score_calculator():
             f3 = random.randint(0,len(fwd_lst)-1)
 
         team = [gk_lst[g1],gk_lst[g2],def_lst[d1],def_lst[d2],def_lst[d3],def_lst[d4],def_lst[d5],mid_lst[m5],mid_lst[m1],mid_lst[m2],mid_lst[m3],mid_lst[m4],fwd_lst[f3],fwd_lst[f1],fwd_lst[f2]]
-        cost = eval.evaluate_team_score(team,35)
-        return cost
+        cost = cost + eval.evaluate_team_score(team,35)
+        
+    return cost/100
 
 
 print(random_team_score_calculator())
