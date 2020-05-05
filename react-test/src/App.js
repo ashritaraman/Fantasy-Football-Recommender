@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import './App.css';
+import React, { Fragment } from "react";
+import "./App.css";
 import {
   Button,
   Form,
@@ -7,13 +7,14 @@ import {
   Header,
   Message,
   Segment,
-} from 'semantic-ui-react';
-import { Container } from 'semantic-ui-react';
-import Head from './Head';
-import FormEx from './FormEx';
-import Menu from './Menu';
-import ProjectDescription from './ProjectDescription'
-import PlayerTable from './PlayerTable'
+} from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
+import Head from "./Head";
+import FormEx from "./FormEx";
+import Menu from "./Menu";
+import ProjectDescription from "./ProjectDescription";
+import PlayerTable from "./PlayerTable";
+import Modal from "./Modal";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <ProjectDescription />
       <PlayerTable />
       <FormEx />
+      <Modal />
       {/* </Grid> */}
     </Fragment>
   );
