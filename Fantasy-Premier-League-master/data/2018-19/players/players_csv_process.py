@@ -45,24 +45,24 @@ def make_big_csv(gw):
 
         game_week = gw
         while game_week<len(gw_df_list):  
-            # print('curr player', elem) 
             lst_1 = [] 
             lst_2 = []
             lst_3 = []
             lst_4 = []
             lst_5 = [] 
             for row in gw_df_list:
-                if row[10] == gw:
+                #row[10] = round
+                if row[10] == game_week:
                     final_total_points = row[11]
-                if row[10] == gw-5:
+                if row[10] == game_week-5:
                     lst_5 = row
-                if row[10] == gw-4:
+                if row[10] == game_week-4:
                     lst_4 = row
-                if row[10] == gw-3:
+                if row[10] == game_week-3:
                     lst_3 = row
-                if row[10] == gw-2:
+                if row[10] == game_week-2:
                     lst_2 = row
-                if row[10] == gw-1:
+                if row[10] == game_week-1:
                     lst_1 = row
 
             temp_lst = [] 
@@ -83,7 +83,7 @@ def make_big_csv(gw):
     return df_list
 
 
-cols = ['assists','big_chances_created','clean_sheets','clearances_blocks_interceptions','dribbles','errors_leading_to_goal','ict_index','key_passes','penalties_missed','penalties_saved','round','player_pos','gw','current_gw_points', 'player_id', 'total_points_prev']
+cols = ['assists','big_chances_created','clean_sheets','clearances_blocks_interceptions','dribbles','errors_leading_to_goal','ict_index','key_passes','penalties_missed','penalties_saved','round','total_points','position_number','current_gw', 'player_id', 'total_points_prev']
 df_list = make_big_csv(6)
 
 df_fwd= pd.DataFrame(df_list, columns = cols)
