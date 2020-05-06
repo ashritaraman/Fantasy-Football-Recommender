@@ -12,8 +12,8 @@ df = pd.read_csv('weighted_nn_data.csv')
 
 dataset = df.values
 
-X = dataset[:, 0:10]
-Y = dataset[:, 12]
+X = dataset[:, 0:13]
+Y = dataset[:, 13]
 
 min_max_scaler = preprocessing.MinMaxScaler()
 X_scale = min_max_scaler.fit_transform(X)
@@ -24,10 +24,12 @@ X_val, X_test, Y_val, Y_test = train_test_split(X_val_and_test, Y_val_and_test, 
 
 #print(X_train.shape, X_val.shape, X_test.shape, Y_train.shape, Y_val.shape, Y_test.shape)
 
-model = Sequential([    Dense(32, activation='relu', input_shape=(10,)),    Dense(32, activation='relu'),    Dense(1, activation='sigmoid'),])
+model = Sequential([    Dense(32, activation='relu', input_shape=(13,)),    Dense(32, activation='relu'),    Dense(1, activation='sigmoid'),])
 
 model.compile(optimizer='sgd', loss='mean_squared_error', metrics=['accuracy'])
 
-hist = model.fit(X_train, Y_train, batch_size=32, epochs=20, validation_data=(X_val, Y_val))
+hist = model.fit(X_train, Y_train, batch_size=32, epochs=10, validation_data=(X_val, Y_val))
 
 model.evaluate(X_test, Y_test)[1]
+hilo = model.predict(X_test)
+print(hilo)
