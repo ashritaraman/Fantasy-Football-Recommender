@@ -22,9 +22,9 @@ from sklearn.pipeline import Pipeline
 dataframe = pd.read_csv("weighted_nn_data.csv")
 dataset = dataframe.values
 # split into input (X) and output (Y) variables
-X = dataset[:,0:14]
-Y = dataset[:,14]
-
+X = dataset[0:14477,0:14]
+Y = dataset[0:14477,14]
+x_test = dataset[14477:,0:14]
 # define base model
 def baseline_model():
 	# create model
@@ -36,14 +36,17 @@ def baseline_model():
 	return model
 
 # evaluate model
-estimator = KerasRegressor(build_fn=baseline_model, epochs=10, batch_size=5, verbose=0)
+estimator = KerasRegressor(build_fn=baseline_model, epochs=100, batch_size=5, verbose=0)
 # kfold = KFold(n_splits=10)
 # results = cross_val_score(estimator, X, Y, cv=kfold)
 # print("Baseline: %.2f (%.2f) MSE" % (results.mean(), results.std()))
 estimator.fit(X,Y)
-prediction = estimator.predict(X)
+prediction = estimator.predict(x_test)
 # print(prediction)
+
+
 df_list = [] 
+
 for elem in prediction:
     df_list.append([elem])
 # print(df_list)
