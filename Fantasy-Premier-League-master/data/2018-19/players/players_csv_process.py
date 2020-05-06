@@ -66,6 +66,8 @@ def make_big_csv(gw):
                     lst_1 = row
 
             temp_lst = [] 
+            temp_lst.append(final_total_points)
+            temp_lst.append(game_week)
             i = 0
             while i<len(lst_1): #all list sizes should be the same--12
                 big_row = lst_1[i]*0.4 + lst_2[i]*0.3 + lst_3[i]*0.15 + lst_4[i]*0.1 + lst_5[i]*0.05
@@ -73,9 +75,7 @@ def make_big_csv(gw):
                 i=i+1
 
             temp_lst.append(player_pos)    
-            temp_lst.append(game_week)
             temp_lst.append(str(elem[3]))
-            temp_lst.append(final_total_points)
             df_list.append(temp_lst)
             
             
@@ -83,7 +83,7 @@ def make_big_csv(gw):
     return df_list
 
 
-cols = ['assists','big_chances_created','clean_sheets','clearances_blocks_interceptions','dribbles','errors_leading_to_goal','ict_index','key_passes','penalties_missed','penalties_saved','round','total_points','position_number','current_gw', 'player_id', 'total_points_prev']
+cols = ['total_points_prev', 'current_gw', 'assists','big_chances_created','clean_sheets','clearances_blocks_interceptions','dribbles','errors_leading_to_goal','ict_index','key_passes','penalties_missed','penalties_saved','round','total_points','position_number','player_id']
 df_list = make_big_csv(6)
 
 df_fwd= pd.DataFrame(df_list, columns = cols)
