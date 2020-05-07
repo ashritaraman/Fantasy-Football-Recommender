@@ -9,7 +9,7 @@ export default class Head extends Component {
   handleShow = () => this.setState({ active: true })
   handleHide = () => this.setState({ active: false })
   handleClick = () => window.scrollTo({
-    top: 1000
+    top: 600
   })
 
   render() {
