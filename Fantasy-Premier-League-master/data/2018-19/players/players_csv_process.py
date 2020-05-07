@@ -45,39 +45,37 @@ def make_big_csv(gw):
 
         game_week = gw
         while game_week<len(gw_df_list):  
-            # print('curr player', elem) 
             lst_1 = [] 
             lst_2 = []
             lst_3 = []
             lst_4 = []
             lst_5 = [] 
             for row in gw_df_list:
-                if row[10] == gw:
+                #row[10] = round
+                if row[10] == game_week:
                     final_total_points = row[11]
-                
-                if row[10] == gw-5:
+                if row[10] == game_week-5:
                     lst_5 = row
-                if row[10] == gw-4:
+                if row[10] == game_week-4:
                     lst_4 = row
-                if row[10] == gw-3:
+                if row[10] == game_week-3:
                     lst_3 = row
-                if row[10] == gw-2:
+                if row[10] == game_week-2:
                     lst_2 = row
-                if row[10] == gw-1:
+                if row[10] == game_week-1:
                     lst_1 = row
 
             temp_lst = [] 
-            # print(gw)
-            # print(folder_name)
+            temp_lst.append(final_total_points)
+            temp_lst.append(game_week)
+            temp_lst.append(player_pos)  
             i = 0
-            while i<len(lst_1):
+            while i<len(lst_1): #all list sizes should be the same--12
                 big_row = lst_1[i]*0.4 + lst_2[i]*0.3 + lst_3[i]*0.15 + lst_4[i]*0.1 + lst_5[i]*0.05
                 temp_lst.append(big_row)
                 i=i+1
-
-            temp_lst.append(player_pos)    
-            temp_lst.append(game_week)
-            temp_lst.append(final_total_points)
+  
+            temp_lst.append(str(elem[3]))
             df_list.append(temp_lst)
             
             
@@ -85,7 +83,7 @@ def make_big_csv(gw):
     return df_list
 
 
-cols = ['assists','big_chances_created','clean_sheets','clearances_blocks_interceptions','dribbles','errors_leading_to_goal','ict_index','key_passes','penalties_missed','penalties_saved','round','total_points_prev','player_pos','gw','current_gw_points']
+cols = ['total_points_prev', 'current_gw', 'position_number','assists','big_chances_created','clean_sheets','clearances_blocks_interceptions','dribbles','errors_leading_to_goal','ict_index','key_passes','penalties_missed','penalties_saved','round','total_points','player_id']
 df_list = make_big_csv(6)
 
 df_fwd= pd.DataFrame(df_list, columns = cols)
