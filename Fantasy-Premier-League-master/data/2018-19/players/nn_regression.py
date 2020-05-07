@@ -1,6 +1,6 @@
 # https://www.freecodecamp.org/news/how-to-build-your-first-neural-network-to-predict-house-prices-with-keras-f8db83049159/
 # https://machinelearningmastery.com/regression-tutorial-keras-deep-learning-library-python/
-
+import tensorflow as tf
 import pandas as pd
 from keras.models import Sequential
 from keras.layers import Dense
@@ -37,21 +37,21 @@ def baseline_model():
 def larger_model():
     # create model
 	model = Sequential()
-	model.add(Dense(13, input_dim=13, kernel_initializer='normal', activation='sigmoid'))
-	model.add(Dense(12, kernel_initializer='normal', activation='sigmoid'))
-	model.add(Dense(11, kernel_initializer='normal', activation='sigmoid'))
-	model.add(Dense(10, kernel_initializer='normal', activation='sigmoid'))
-	model.add(Dense(9, kernel_initializer='normal', activation='sigmoid'))
-	model.add(Dense(8, kernel_initializer='normal', activation='sigmoid'))
-	model.add(Dense(7, kernel_initializer='normal', activation='sigmoid'))
-	model.add(Dense(6, kernel_initializer='normal', activation='sigmoid'))
-	model.add(Dense(5, kernel_initializer='normal', activation='sigmoid'))
-	model.add(Dense(4, kernel_initializer='normal', activation='sigmoid'))
-	model.add(Dense(3, kernel_initializer='normal', activation='sigmoid'))
-	model.add(Dense(2, kernel_initializer='normal', activation='sigmoid'))
-	model.add(Dense(1, kernel_initializer='normal', activation='sigmoid'))
+	model.add(Dense(13, input_dim=13, kernel_initializer='normal', activation='relu'))
+	# model.add(Dense(12, kernel_initializer='normal', activation='relu'))
+	# model.add(Dense(11, kernel_initializer='normal', activation='relu'))
+	model.add(Dense(10, kernel_initializer='normal', activation='relu'))
+	# model.add(Dense(9, kernel_initializer='normal', activation='relu'))
+	# model.add(Dense(8, kernel_initializer='normal', activation='relu'))
+	model.add(Dense(7, kernel_initializer='normal', activation='relu'))
+	# model.add(Dense(6, kernel_initializer='normal', activation='relu'))
+	# model.add(Dense(5, kernel_initializer='normal', activation='relu'))
+	model.add(Dense(4, kernel_initializer='normal', activation='relu'))
+	# model.add(Dense(3, kernel_initializer='normal', activation='relu'))
+	# model.add(Dense(2, kernel_initializer='normal', activation='relu'))
+	model.add(Dense(1, kernel_initializer='normal', activation='relu'))
 	# Compile model
-	model.compile(loss='mean_squared_error', optimizer='adam')
+	model.compile(loss=tf.keras.losses.MeanAbsolutePercentageError(reduction="auto", name="mean_absolute_percentage_error"), optimizer='sgd')
 	return model
 
 
@@ -63,9 +63,9 @@ Y_pred = dataset2[:,14]
 
 
 # evaluate model
-estimator = KerasRegressor(build_fn=larger_model, epochs=10, batch_size=2000, verbose=0)
+estimator = KerasRegressor(build_fn=larger_model) # , epochs=10, batch_size=32, verbose=0
 
-hist = estimator.fit(X, Y, batch_size=32, epochs=10, validation_data=(X_Pred, Y_pred))
+hist = estimator.fit(X, Y, batch_size=32, epochs=30, validation_data=(X_Pred, Y_pred))
 
 
 # estimator.fit(X,Y)
