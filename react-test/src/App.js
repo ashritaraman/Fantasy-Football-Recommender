@@ -25,7 +25,6 @@ function App() {
       <ProjectDescription />
       <PlayerTable />
       <FormEx />
-      <Modal />
       {/* </Grid> */}
     </Fragment>
   );

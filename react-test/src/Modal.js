@@ -1,12 +1,15 @@
 import React from "react";
 import { Button, Header, Image, Modal } from "semantic-ui-react";
 
+
 const styles = {
   position: "relative",
   left: 584,
   right: 10,
   bottom: 30,
 };
+
+
 const ModalModalExample = () => (
   <Modal
     trigger={
@@ -15,8 +18,7 @@ const ModalModalExample = () => (
           Submit
         </Button>
       </div>
-    }
-  >
+    }>
     <Modal.Header>Select a Photo</Modal.Header>
     <Modal.Content image>
       <Image wrapped size="medium" src="/images/avatar/large/rachel.png" />
