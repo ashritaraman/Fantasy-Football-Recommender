@@ -18,10 +18,12 @@ dataset = dataframe.values
 X = dataset[:,1:14]
 Y = dataset[:,14]
 
-print(X[0])
-print(Y[0])
+# print(X[0])
+# print(Y[0])
 
-
+act1 = "tanh"
+act2 = "sigmoid"
+act3 = "relu"
 # define base model
 def baseline_model():
 	# create model
@@ -35,19 +37,22 @@ def baseline_model():
 def larger_model():
     # create model
 	model = Sequential()
-	model.add(Dense(13, input_dim=13, kernel_initializer='normal', activation='relu'))
-	model.add(Dense(6, kernel_initializer='normal', activation='relu'))
-	model.add(Dense(1, kernel_initializer='normal'))
+	model.add(Dense(13, input_dim=13, kernel_initializer='normal', activation='sigmoid'))
+	model.add(Dense(12, kernel_initializer='normal', activation='sigmoid'))
+	model.add(Dense(11, kernel_initializer='normal', activation='sigmoid'))
+	model.add(Dense(10, kernel_initializer='normal', activation='sigmoid'))
+	model.add(Dense(9, kernel_initializer='normal', activation='sigmoid'))
+	model.add(Dense(8, kernel_initializer='normal', activation='sigmoid'))
+	model.add(Dense(7, kernel_initializer='normal', activation='sigmoid'))
+	model.add(Dense(6, kernel_initializer='normal', activation='sigmoid'))
+	model.add(Dense(5, kernel_initializer='normal', activation='sigmoid'))
+	model.add(Dense(4, kernel_initializer='normal', activation='sigmoid'))
+	model.add(Dense(3, kernel_initializer='normal', activation='sigmoid'))
+	model.add(Dense(2, kernel_initializer='normal', activation='sigmoid'))
+	model.add(Dense(1, kernel_initializer='normal', activation='sigmoid'))
 	# Compile model
 	model.compile(loss='mean_squared_error', optimizer='adam')
 	return model
-
-# evaluate model
-estimator = KerasRegressor(build_fn=larger_model, epochs=10, batch_size=5, verbose=0)
-
-estimator.fit(X,Y)
-
-print(estimator)
 
 
 dataframe2 = pd.read_csv("weighted_nn_data_test_1819.csv")
@@ -55,6 +60,19 @@ dataset2 = dataframe2.values
 # split into input (X) and output (Y) variables
 X_Pred = dataset2[:,1:14]
 Y_pred = dataset2[:,14]
+
+
+# evaluate model
+estimator = KerasRegressor(build_fn=larger_model, epochs=10, batch_size=2000, verbose=0)
+
+hist = estimator.fit(X, Y, batch_size=32, epochs=10, validation_data=(X_Pred, Y_pred))
+
+
+# estimator.fit(X,Y)
+
+
+
+
 prediction = estimator.predict(X_Pred)
 # print(prediction)
 
