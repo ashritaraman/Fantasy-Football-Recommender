@@ -32,12 +32,23 @@ def baseline_model():
 	model.compile(loss='mean_squared_error', optimizer='adam')
 	return model
 
+def larger_model():
+    # create model
+	model = Sequential()
+	model.add(Dense(13, input_dim=13, kernel_initializer='normal', activation='relu'))
+	model.add(Dense(6, kernel_initializer='normal', activation='relu'))
+	model.add(Dense(1, kernel_initializer='normal'))
+	# Compile model
+	model.compile(loss='mean_squared_error', optimizer='adam')
+	return model
+
 # evaluate model
-estimator = KerasRegressor(build_fn=baseline_model, epochs=100, batch_size=5, verbose=0)
-# kfold = KFold(n_splits=10)
-# results = cross_val_score(estimator, X, Y, cv=kfold)
-# print("Baseline: %.2f (%.2f) MSE" % (results.mean(), results.std()))
+estimator = KerasRegressor(build_fn=larger_model, epochs=10, batch_size=5, verbose=0)
+
 estimator.fit(X,Y)
+
+print(estimator)
+
 
 dataframe2 = pd.read_csv("weighted_nn_data_test_1819.csv")
 dataset2 = dataframe2.values
@@ -46,6 +57,7 @@ X_Pred = dataset2[:,1:14]
 Y_pred = dataset2[:,14]
 prediction = estimator.predict(X_Pred)
 # print(prediction)
+
 
 df_list = [] 
 
