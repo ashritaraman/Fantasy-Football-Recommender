@@ -2,6 +2,7 @@
 # https://machinelearningmastery.com/regression-tutorial-keras-deep-learning-library-python/
 import tensorflow as tf
 import pandas as pd
+import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.wrappers.scikit_learn import KerasRegressor
@@ -11,12 +12,13 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 
 
+
 # load dataset
 dataframe = pd.read_csv("weighted_nn_data_train.csv")
 dataset = dataframe.values
 # split into input (X) and output (Y) variables
-X = dataset[:,1:14]
-Y = dataset[:,14]
+X = dataset[:,1:12]
+Y = dataset[:,12]
 
 # print(X[0])
 # print(Y[0])
@@ -37,35 +39,35 @@ def baseline_model():
 def larger_model():
     # create model
 	model = Sequential()
-	model.add(Dense(13, input_dim=13, kernel_initializer='normal', activation='relu'))
+	model.add(Dense(11, input_dim=11, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(12, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(11, kernel_initializer='normal', activation='relu'))
-	model.add(Dense(10, kernel_initializer='normal', activation='relu'))
+	# model.add(Dense(10, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(9, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(8, kernel_initializer='normal', activation='relu'))
 	model.add(Dense(7, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(6, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(5, kernel_initializer='normal', activation='relu'))
-	model.add(Dense(4, kernel_initializer='normal', activation='relu'))
+	# model.add(Dense(4, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(3, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(2, kernel_initializer='normal', activation='relu'))
 	model.add(Dense(1, kernel_initializer='normal', activation='relu'))
 	# Compile model
-	model.compile(loss=tf.keras.losses.MeanAbsolutePercentageError(reduction="auto", name="mean_absolute_percentage_error"), optimizer='sgd')
+	model.compile(loss="mean_absolute_error", optimizer=tf.keras.optimizers.Adam(learning_rate=0.001))
 	return model
 
 
 dataframe2 = pd.read_csv("weighted_nn_data_test_1819.csv")
 dataset2 = dataframe2.values
 # split into input (X) and output (Y) variables
-X_Pred = dataset2[:,1:14]
-Y_pred = dataset2[:,14]
+X_Pred = dataset2[:,1:12]
+Y_pred = dataset2[:,12]
 
 
 # evaluate model
 estimator = KerasRegressor(build_fn=larger_model) # , epochs=10, batch_size=32, verbose=0
 
-hist = estimator.fit(X, Y, batch_size=32, epochs=30, validation_data=(X_Pred, Y_pred))
+hist = estimator.fit(X, Y, batch_size=32, epochs=100, validation_data=(X_Pred, Y_pred))
 
 
 # estimator.fit(X,Y)
