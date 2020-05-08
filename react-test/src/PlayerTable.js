@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { Form, Table, Pagination, Segment, Grid, GridColumn, Header } from 'semantic-ui-react'
+import { Form, Table, Pagination, Segment, Grid, Container, GridColumn, Header } from 'semantic-ui-react'
 import Combined from './combined_gw.json'
 import DropdownGK from './DropdownGK.js'
 
@@ -12,7 +12,7 @@ export default class PlayerTable extends Component {
     data: Combined,
     direction: 'ascending',
     begin: 0,
-    end: 10,
+    end: 15,
     pageNumber: 1,
     gameWeek: 2,
     team_a_col: 'team_a_score_1',
@@ -45,8 +45,8 @@ export default class PlayerTable extends Component {
   handlePageChange = (e, pageInfo) => {
     console.log("here");
     this.setState({
-      begin: pageInfo.activePage * 10 - 10,
-      end: pageInfo.activePage * 10,
+      begin: pageInfo.activePage * 15 - 15,
+      end: pageInfo.activePage * 15,
     })
 
   }
@@ -61,6 +61,12 @@ export default class PlayerTable extends Component {
 
     return (
       <Segment basic padded='very'>
+        <Segment basic color="purple" padded="very">
+          <Container text>
+            <Header as='h2' textAlign='center'>Player Information Table</Header>
+            <p>This table shows player information. You can select a game week to see the previous week's scores.</p>
+          </Container>
+        </Segment>
         <Form>
           <Grid columns={3} padded>
             <Grid.Column></Grid.Column>
@@ -90,12 +96,12 @@ export default class PlayerTable extends Component {
               <Table.HeaderCell
 
               >
-                Previous Week Team A Score
+                Previous Week Away Score
             </Table.HeaderCell>
               <Table.HeaderCell
 
               >
-                Previous Week Team H Score
+                Previous Week Home Score
             </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
@@ -200,7 +206,7 @@ export default class PlayerTable extends Component {
               ))}
           </Table.Body>
           <Table.Footer>
-            <Pagination defaultActivePage={1} totalPages={Math.ceil(data.length / 10)} onPageChange={this.handlePageChange} />
+            <Pagination defaultActivePage={1} totalPages={Math.ceil(data.length / 15)} onPageChange={this.handlePageChange} />
           </Table.Footer>
         </Table>
       </Segment >

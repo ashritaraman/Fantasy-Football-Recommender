@@ -31,8 +31,8 @@ def checkIDDups(id_lst, team_a_score_lst, team_h_score_lst):
                 tot_a_score += team_a_score_lst[dup_index][0]
                 tot_h_score += team_h_score_lst[dup_index][0]
             fin_id_lst.append(id)
-            fin_a_score_lst.append(str(int(tot_a_score)))
-            fin_h_score_lst.append(str(int(tot_h_score)))
+            fin_a_score_lst.append((int(tot_a_score)))
+            fin_h_score_lst.append((int(tot_h_score)))
             visited.add(id)
     return fin_id_lst, fin_a_score_lst, fin_h_score_lst
 
@@ -68,8 +68,8 @@ for i in range(1, 39):
     df_final = pd.merge(
         left=df_final, right=df2, how="left", left_on="id", right_on="id"
     )
-    df_final["team_a_score"].fillna("No Information", inplace=True)
-    df_final["team_h_score"].fillna("No Information", inplace=True)
+    df_final["team_a_score"].fillna(0, inplace=True)
+    df_final["team_h_score"].fillna(0, inplace=True)
     df_final = df_final.rename(
         columns={
             "team_a_score": "team_a_score_" + str(i),
@@ -77,4 +77,4 @@ for i in range(1, 39):
         }
     )
 # print(df_final)
-df_final.to_csv("combined_gw.csv")
+df_final.to_csv("combined_gw_2.csv")
