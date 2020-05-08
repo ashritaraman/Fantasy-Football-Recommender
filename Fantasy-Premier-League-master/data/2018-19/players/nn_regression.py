@@ -42,12 +42,12 @@ def larger_model():
 	model.add(Dense(11, input_dim=11, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(12, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(11, kernel_initializer='normal', activation='relu'))
-	# model.add(Dense(10, kernel_initializer='normal', activation='relu'))
+	model.add(Dense(10, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(9, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(8, kernel_initializer='normal', activation='relu'))
-	model.add(Dense(7, kernel_initializer='normal', activation='relu'))
+	# model.add(Dense(7, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(6, kernel_initializer='normal', activation='relu'))
-	# model.add(Dense(5, kernel_initializer='normal', activation='relu'))
+	model.add(Dense(5, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(4, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(3, kernel_initializer='normal', activation='relu'))
 	# model.add(Dense(2, kernel_initializer='normal', activation='relu'))
@@ -67,7 +67,7 @@ Y_pred = dataset2[:,12]
 # evaluate model
 estimator = KerasRegressor(build_fn=larger_model) # , epochs=10, batch_size=32, verbose=0
 
-hist = estimator.fit(X, Y, batch_size=32, epochs=100, validation_data=(X_Pred, Y_pred))
+hist = estimator.fit(X, Y, batch_size=128, epochs=1000, validation_data=(X_Pred, Y_pred))
 
 
 # estimator.fit(X,Y)
