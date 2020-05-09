@@ -13,7 +13,8 @@ import tensorflow as tf
 
 estimator = nn.estimator
 
-gw = 5 # we get this input from the front end 
+
+gw = 3 # we get this input from the front end 
 
 cols = ['assists','big_chances_created','clean_sheets','clearances_blocks_interceptions','dribbles','errors_leading_to_goal','ict_index','key_passes','penalties_missed','penalties_saved','total_points']
 
@@ -35,6 +36,8 @@ def make_def_lst():
             for i in range(10):
                 stat_shit = (stats_csv_lst[idx-1])[i]*0.4 + (stats_csv_lst[idx-2])[i]*0.3 + (stats_csv_lst[idx-3])[i]*0.15 + (stats_csv_lst[idx-4])[i]*0.1 + (stats_csv_lst[idx-5])[i]*0.05
                 temp_lst.append(stat_shit)
+            temp_lst = [temp_lst]
+            temp_lst = pd.DataFrame(temp_lst)
             total_points = estimator.predict(temp_lst)
             def_lst.append([player_id,total_points])
         except:
@@ -48,16 +51,17 @@ def make_def_lst():
             item = "gw.csv"
             gw_df = pd.read_csv(file_path + item, usecols=cols)
             gw_df_list = gw_df.values.tolist()
-            temp_lst = []
-            try:
+            if (len(gw_df_list) > row):
+                temp_lst = []
                 gw_row = gw_df.iloc[row, :] #row to be passed into the model
                 total_pts = gw_row['total_points']
                 temp_lst.append(total_pts)
                 temp_lst.append(gw_row[0:10])
+                temp_lst = [temp_lst]
+                # temp_lst = pd.DataFrame(temp_lst)
                 total_points = estimator.predict(temp_lst)
                 def_lst.append([elem[5],total_points])
-            except:
-              pass
+
     return def_lst
             
 
@@ -65,26 +69,30 @@ def make_def_lst():
 
 
 
-def make_mid_lst():
-    mid = pd.read_csv("mid.csv")
-    df_lst = mid.values.tolist()
-    pass
+# def make_mid_lst():
+#     mid = pd.read_csv("mid.csv")
+#     df_lst = mid.values.tolist()
+#     pass
 
-def make_fwd_lst():
-    fwd = pd.read_csv("fwd.csv")
-    df_lst = fwd.values.tolist()
-    pass
+# def make_fwd_lst():
+#     fwd = pd.read_csv("fwd.csv")
+#     df_lst = fwd.values.tolist()
+#     pass
 
-def make_gk_lst():
-    gk = pd.read_csv("gk.csv")
-    df_lst = gk.values.tolist()
-    pass
+# def make_gk_lst():
+#     gk = pd.read_csv("gk.csv")
+#     df_lst = gk.values.tolist()
+#     pass
 
 def_lst = make_def_lst()
 print(def_lst)
 # mid_lst = make_mid_lst()
 # gk_lst = make_gk_lst()
 # fwd_lst = make_fwd_lst()
+
+
+
+
 
 
 
