@@ -44,23 +44,25 @@ def make_def_lst():
             pass
         
     if gw<6: #frontend: add form check/text message saying input gw 2 or higher
-       row = gw-1
        for elem in df_lst:
-            folder_name = elem[2] + "_" + elem[3] + "_" + str(elem[5])
-            file_path = './'+ folder_name + '/'
-            item = "gw.csv"
-            gw_df = pd.read_csv(file_path + item, usecols=cols)
-            gw_df_list = gw_df.values.tolist()
-            if (len(gw_df_list) > row):
-                temp_lst = []
-                gw_row = gw_df.iloc[row, :] #row to be passed into the model
-                total_pts = gw_row['total_points']
-                temp_lst.append(total_pts)
-                temp_lst.append(gw_row[0:10])
-                temp_lst = [temp_lst]
-                # temp_lst = pd.DataFrame(temp_lst)
-                total_points = estimator.predict(temp_lst)
-                def_lst.append([elem[5],total_points])
+        try:
+            folder_name = elem[2] + "_" + elem[3]+ '_' + str(elem[5])
+            player_id = elem[5]
+            stats_csv = pd.read_csv("./"+ folder_name + "/"+ "gw.csv", usecols= cols)
+            stats_csv_lst = stats_csv.values.tolist()
+            idx = gw-1
+            temp_lst = []
+            prev_points = (stats_csv_lst[idx])[10]
+            temp_lst.append(prev_points)
+            for i in range(10):
+                stat_shit = (stats_csv_lst[idx])[i]
+                temp_lst.append(stat_shit)
+            temp_lst = [temp_lst]
+            temp_lst = pd.DataFrame(temp_lst)
+            total_points = estimator.predict(temp_lst)
+            def_lst.append([player_id,total_points])
+        except:
+            pass
 
     return def_lst
             
