@@ -67,23 +67,17 @@ Y_pred = dataset2[:,12]
 # evaluate model
 estimator = KerasRegressor(build_fn=larger_model) # , epochs=10, batch_size=32, verbose=0
 
-hist = estimator.fit(X, Y, batch_size=128, epochs=1000, validation_data=(X_Pred, Y_pred))
-
-
-# estimator.fit(X,Y)
-
-
-
+hist = estimator.fit(X, Y, batch_size=128, epochs=100, validation_data=(X_Pred, Y_pred))
 
 prediction = estimator.predict(X_Pred)
 # print(prediction)
 
 
-df_list = [] 
+# df_list = [] 
 
-for elem in prediction:
-    df_list.append([elem])
-# print(df_list)
-df_fwd= pd.DataFrame(df_list, columns = ['prediction'])
-df_fwd.to_csv("prediction.csv")
+# for elem in prediction:
+#     df_list.append([elem])
+# # print(df_list)
+# df_fwd= pd.DataFrame(df_list, columns = ['prediction'])
+# df_fwd.to_csv("prediction.csv")
 
