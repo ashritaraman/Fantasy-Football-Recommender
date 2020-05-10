@@ -39,6 +39,8 @@ def make_def_lst():
             temp_lst = [temp_lst]
             temp_lst = pd.DataFrame(temp_lst)
             total_points = estimator.predict(temp_lst)
+            total_points = total_points.tolist()
+            total_points = total_points[0]
             def_lst.append([player_id,total_points])
         except:
             pass
@@ -60,6 +62,8 @@ def make_def_lst():
             temp_lst = [temp_lst]
             temp_lst = pd.DataFrame(temp_lst)
             total_points = estimator.predict(temp_lst)
+            total_points = total_points.tolist()
+            total_points = total_points[0]
             def_lst.append([player_id,total_points])
         except:
             pass
