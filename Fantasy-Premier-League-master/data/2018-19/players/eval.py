@@ -34,7 +34,7 @@ def evaluate_team_score(team, gw):
                 score = score + elem[1]
     return score
 
-team = rs.team 
+team = rs.team_final
 gw = rs.gw 
 print(team)
 cost = evaluate_team_score(team,gw)

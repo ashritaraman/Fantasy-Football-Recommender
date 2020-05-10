@@ -30,10 +30,10 @@ act3 = "relu"
 def baseline_model():
 	# create model
 	model = Sequential()
-	model.add(Dense(13, input_dim=13, kernel_initializer='normal', activation='relu'))
+	model.add(Dense(11, input_dim=11, kernel_initializer='normal', activation='relu'))
 	model.add(Dense(1, kernel_initializer='normal'))
 	# Compile model
-	model.compile(loss='mean_squared_error', optimizer='adam')
+	model.compile(loss='mean_absolute_error', optimizer=tf.keras.optimizers.Adam(learning_rate=0.001))
 	return model
 
 def larger_model():
@@ -65,9 +65,9 @@ Y_pred = dataset2[:,12]
 
 
 # evaluate model
-estimator = KerasRegressor(build_fn=larger_model) # , epochs=10, batch_size=32, verbose=0
+estimator = KerasRegressor(build_fn=baseline_model) # , epochs=10, batch_size=32, verbose=0
 
-estimator.fit(X, Y, batch_size=128, epochs=1000, validation_data=(X_Pred, Y_pred))
+hist = estimator.fit(X, Y, batch_size=64, epochs=200, validation_data=(X_Pred, Y_pred))
 
 # prediction = estimator.predict(X_Pred)
 # print(prediction)

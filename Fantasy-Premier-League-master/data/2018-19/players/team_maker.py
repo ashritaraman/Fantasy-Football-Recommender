@@ -14,7 +14,7 @@ import tensorflow as tf
 estimator = nn.estimator
 
 
-gw = 3 # we get this input from the front end 
+gw = 35 # we get this input from the front end 
 
 cols = ['assists','big_chances_created','clean_sheets','clearances_blocks_interceptions','dribbles','errors_leading_to_goal','ict_index','key_passes','penalties_missed','penalties_saved','total_points']
 
@@ -85,20 +85,30 @@ def sort_list (lst):
     return lst
 
 def sort_lst_of_lsts(lst):
+    n = len(lst)
     seconds_lst = []
+    firsts_lst = []
     sorted_list = []
     for elem in lst:
         seconds_lst.append(elem[1])
+        firsts_lst.append(elem[0])
     seconds_lst = sort_list(seconds_lst)
     for elem_points in seconds_lst:
         for elem in lst:
             if elem_points == elem[1]:
-                sorted_list.append(elem)
+                if elem[0] in firsts_lst:
+                    sorted_list.append(elem)
+                    firsts_lst.remove(elem[0])
+
     return sorted_list
 
 def_lst = make_def_lst(2)
+
 def_lst = sort_lst_of_lsts(def_lst)
-print(def_lst)
+
+# def_lst = make_def_lst(2)
+def_lst2 = sorted(def_lst, key=lambda x: x[1], reverse=True)
+print(def_lst == def_lst2)
 
 mid_lst = make_def_lst(3)
 mid_lst = sort_lst_of_lsts(mid_lst)

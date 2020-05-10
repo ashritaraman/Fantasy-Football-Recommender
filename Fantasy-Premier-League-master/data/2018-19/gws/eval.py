@@ -19,6 +19,7 @@ def evaluate_team_score(team, gw):
 team = rs.team 
 gw = rs.gw 
 
+print(team)
 cost = evaluate_team_score(team,gw)
 print(cost)
 
