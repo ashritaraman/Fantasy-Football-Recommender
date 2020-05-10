@@ -53,7 +53,7 @@ def larger_model():
 	# model.add(Dense(2, kernel_initializer='normal', activation='relu'))
 	model.add(Dense(1, kernel_initializer='normal', activation='relu'))
 	# Compile model
-	model.compile(loss="mean_absolute_error", optimizer=tf.keras.optimizers.Adam(learning_rate=0.01))
+	model.compile(loss="mean_absolute_error", optimizer=tf.keras.optimizers.Adam(learning_rate=0.001))
 	return model
 
 
