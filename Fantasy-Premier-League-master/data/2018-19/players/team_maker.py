@@ -18,8 +18,16 @@ gw = 3 # we get this input from the front end
 
 cols = ['assists','big_chances_created','clean_sheets','clearances_blocks_interceptions','dribbles','errors_leading_to_goal','ict_index','key_passes','penalties_missed','penalties_saved','total_points']
 
-def make_def_lst():
-    df = pd.read_csv("def.csv")
+def make_def_lst(position_num):
+    if position_num == 1:
+        csv_name = "gk.csv"
+    if position_num == 2:
+        csv_name = "def.csv"
+    if position_num == 3: 
+        csv_name = "mid.csv"
+    if position_num == 4: 
+        csv_name = "fwd.csv"
+    df = pd.read_csv(csv_name)
     df_lst = df.values.tolist()
     def_lst = []
     if gw>5:
@@ -69,35 +77,42 @@ def make_def_lst():
             pass
 
     return def_lst
-            
 
 
+# Sort a given list in descending order
+def sort_list (lst):
+    lst.sort(reverse = True)
+    return lst
 
+def sort_lst_of_lsts(lst):
+    seconds_lst = []
+    sorted_list = []
+    for elem in lst:
+        seconds_lst.append(elem[1])
+    seconds_lst = sort_list(seconds_lst)
+    for elem_points in seconds_lst:
+        for elem in lst:
+            if elem_points == elem[1]:
+                sorted_list.append(elem)
+    return sorted_list
 
-
-# def make_mid_lst():
-#     mid = pd.read_csv("mid.csv")
-#     df_lst = mid.values.tolist()
-#     pass
-
-# def make_fwd_lst():
-#     fwd = pd.read_csv("fwd.csv")
-#     df_lst = fwd.values.tolist()
-#     pass
-
-# def make_gk_lst():
-#     gk = pd.read_csv("gk.csv")
-#     df_lst = gk.values.tolist()
-#     pass
-
-def_lst = make_def_lst()
+def_lst = make_def_lst(2)
+def_lst = sort_lst_of_lsts(def_lst)
 print(def_lst)
-# mid_lst = make_mid_lst()
-# gk_lst = make_gk_lst()
-# fwd_lst = make_fwd_lst()
 
+mid_lst = make_def_lst(3)
+mid_lst = sort_lst_of_lsts(mid_lst)
 
+gk_lst = make_def_lst(1)
+gk_lst = sort_lst_of_lsts(gk_lst)
 
+fwd_lst = make_def_lst(4)
+fwd_lst = sort_lst_of_lsts(fwd_lst)
+
+# print(def_lst)
+# print(mid_lst)
+# print(fwd_lst)
+# print(gk_lst)
 
 
 
