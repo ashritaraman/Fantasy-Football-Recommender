@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import restrictions as rs
-# import ranked_players as rp
+import ranked_players 
 
 
 # Reversing a string
@@ -36,7 +36,7 @@ def evaluate_team_score(team, gw):
 
 team = rs.team_final
 gw = rs.gw 
-print(team)
+print(ranked_players.player_name_gen(team))
 cost = evaluate_team_score(team,gw)
 print(cost)
 
