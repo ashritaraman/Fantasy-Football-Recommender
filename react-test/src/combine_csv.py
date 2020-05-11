@@ -11,10 +11,11 @@ def extractId(name_lst):
     return id_lst
 
 
-def checkIDDups(id_lst, team_a_score_lst, team_h_score_lst):
+def checkIDDups(id_lst, team_a_score_lst, team_h_score_lst, value_lst):
     fin_id_lst = list()
     fin_a_score_lst = list()
     fin_h_score_lst = list()
+    fin_val_lst = list()
     visited = set()
 
     for id in id_lst:
@@ -27,14 +28,17 @@ def checkIDDups(id_lst, team_a_score_lst, team_h_score_lst):
             # now we have list of indices of duplicates for some id
             tot_a_score = 0
             tot_h_score = 0
+            tot_val = 0
             for dup_index in dup_index_lst:
                 tot_a_score += team_a_score_lst[dup_index][0]
                 tot_h_score += team_h_score_lst[dup_index][0]
+                tot_val += value_lst[dup_index][0]
             fin_id_lst.append(id)
             fin_a_score_lst.append((int(tot_a_score)))
             fin_h_score_lst.append((int(tot_h_score)))
+            fin_val_lst.append((int(tot_val)))
             visited.add(id)
-    return fin_id_lst, fin_a_score_lst, fin_h_score_lst
+    return fin_id_lst, fin_a_score_lst, fin_h_score_lst, fin_val_lst
 
 
 df_final = pd.read_csv(
@@ -51,30 +55,35 @@ for i in range(1, 39):
     path_name = "./gws/gw" + str(i) + ".csv"
     dfa_score = pd.read_csv(path_name, usecols=["team_a_score"])
     dfh_score = pd.read_csv(path_name, usecols=["team_h_score"])
+    dfval = pd.read_csv(path_name, usecols=["value"])
     # df2 = pd.read_csv(path_name, usecols=["team_a_score", "team_h_score"])
     dfName = pd.read_csv(path_name, usecols=["name"])
     dfName_list = dfName.values.tolist()
     id_lst = extractId(dfName_list)
     team_a_score_lst = dfa_score.values.tolist()
     team_h_score_lst = dfh_score.values.tolist()
-    id_lst, team_a_score_lst, team_h_score_lst = checkIDDups(
-        id_lst, team_a_score_lst, team_h_score_lst
+    team_val_list = dfval.values.tolist()
+    id_lst, team_a_score_lst, team_h_score_lst, team_val_list = checkIDDups(
+        id_lst, team_a_score_lst, team_h_score_lst, team_val_list
     )
-    df2 = pd.DataFrame(columns=["id", "team_a_score", "team_h_score"])
+    df2 = pd.DataFrame(columns=["id", "team_a_score", "team_h_score", "value"])
     df2["id"] = id_lst
     df2["team_a_score"] = team_a_score_lst
     df2["team_h_score"] = team_h_score_lst
+    df2["value"] = team_val_list
 
     df_final = pd.merge(
         left=df_final, right=df2, how="left", left_on="id", right_on="id"
     )
     df_final["team_a_score"].fillna(0, inplace=True)
     df_final["team_h_score"].fillna(0, inplace=True)
+    df_final["value"].fillna(0, inplace=True)
     df_final = df_final.rename(
         columns={
             "team_a_score": "team_a_score_" + str(i),
             "team_h_score": "team_h_score_" + str(i),
+            "value": "value_" + str(i)
         }
     )
 # print(df_final)
-df_final.to_csv("combined_gw_2.csv")
+df_final.to_csv("combined_gw_3.csv")
