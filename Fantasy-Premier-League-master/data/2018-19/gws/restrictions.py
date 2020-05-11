@@ -4,7 +4,7 @@ import numpy as np
 import csv 
 from pandas import DataFrame
 
-gw = 3
+gw = 2
 ppt = 3 
 g = 2
 d = 5
