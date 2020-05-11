@@ -14,7 +14,7 @@ import tensorflow as tf
 estimator = nn.estimator
 
 
-gw = 2 # we get this input from the front end 
+gw = 38 # we get this input from the front end 
 
 cols = ['assists','big_chances_created','clean_sheets','clearances_blocks_interceptions','dribbles','errors_leading_to_goal','ict_index','key_passes','penalties_missed','penalties_saved','total_points']
 
