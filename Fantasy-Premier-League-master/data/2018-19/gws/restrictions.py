@@ -4,7 +4,7 @@ import numpy as np
 import csv 
 from pandas import DataFrame
 
-gw = 35
+gw = 3
 ppt = 3 
 g = 2
 d = 5
@@ -18,6 +18,10 @@ def_lst = ranked_players.delete_dups(ranked_players.pos_ranked_players(2,gw))
 mid_lst = ranked_players.delete_dups(ranked_players.pos_ranked_players(3,gw))
 fwd_lst = ranked_players.delete_dups(ranked_players.pos_ranked_players(4,gw))
 
+print(gk_lst)
+print(def_lst)
+print(mid_lst)
+print(fwd_lst)
 
 
 def form_team_basic(gw):
@@ -106,10 +110,7 @@ def team_modif_ppt(team,g,d,m,f):
                         f=f+1
         i=i+1
 
-    # print(team_list)
-    # print(g)       
-    # print(team)
-    # print(team_list)
+    
     return ([team,team_list,[g,d,m,f]])
   
 

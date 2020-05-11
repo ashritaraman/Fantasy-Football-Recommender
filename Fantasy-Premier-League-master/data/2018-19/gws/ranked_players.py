@@ -42,9 +42,49 @@ def rank_players(gw):
     if gw==1: 
         pass
     elif gw==2:
-        pass
+        csv_names = [ "gw"+str(gw-1)+".csv"]
+        name_count = 0
+        for name in csv_names:
+            df = pd.read_csv(name, usecols = ['name','ict_index'], encoding = "cp1252")
+            df_list = df.values.tolist()
+            lst_1 = df_list
+            
+        for x in lst_1:
+            avg = x[1]/3
+            rank_players_lst.append([x[0],avg])
+                    
+        data_list = []
+        for player in rank_players_lst:
+            data_list.append(player[1])
+        sort_list(data_list)
+        lst_1 = rank_players_lst
+        rank_players_lst = []
+        for data_point in data_list:
+            for x in lst_1:
+                if x[1] == data_point:
+                    rank_players_lst.append(x)
     elif gw==3: 
-        pass
+        csv_names = [ "gw"+str(gw-1)+".csv"]
+        name_count = 0
+        for name in csv_names:
+            df = pd.read_csv(name, usecols = ['name','ict_index'], encoding = "cp1252")
+            df_list = df.values.tolist()
+            lst_1 = df_list
+            
+        for x in lst_1:
+            avg = x[1]/3
+            rank_players_lst.append([x[0],avg])
+                    
+        data_list = []
+        for player in rank_players_lst:
+            data_list.append(player[1])
+        sort_list(data_list)
+        lst_1 = rank_players_lst
+        rank_players_lst = []
+        for data_point in data_list:
+            for x in lst_1:
+                if x[1] == data_point:
+                    rank_players_lst.append(x)
     else:
         csv_names = [ "gw"+str(gw-1)+".csv","gw"+str(gw-2)+".csv","gw"+str(gw-3)+".csv"]
         name_count = 0
