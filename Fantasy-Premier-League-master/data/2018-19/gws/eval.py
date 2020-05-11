@@ -42,8 +42,8 @@ team = rs.team
 gw = rs.gw
 # print(ranked_players.player_name_gen(team))
 
-cost = evaluate_team_score(team,gw)
-# print(cost)
+score = evaluate_team_score(team,gw)
+
 
 def team_to_csv(team):
     lst1 = [] 
@@ -65,6 +65,7 @@ def team_to_csv(team):
     final_lst.append(lst3)
     final_lst.append(lst4)
     final_lst.append(gw)
+    final_lst.append(score)
     return final_lst
 
 final_lst = team_to_csv(team)
@@ -82,6 +83,7 @@ while i<4:
     name_list.append(temp_lst)
     i=i+1
 name_list.append(gw)
+name_list.append(score)
 
-df_fwd= pd.DataFrame([final_lst,name_list], columns = ['goalkeepers','defenders','midfielders','forwards','gameweek'])
+df_fwd= pd.DataFrame([final_lst,name_list], columns = ['goalkeepers','defenders','midfielders','forwards','gameweek','score'])
 df_fwd.to_csv(str(gw)+'prelim_team'+".csv")
