@@ -29,10 +29,12 @@ class FormExampleSubcomponentControl extends Component {
       defender2: "",
       defender3: "",
       defender4: "",
+      defender5: "",
       midfielder1: "",
       midfielder2: "",
       midfielder3: "",
       midfielder4: "",
+      midfielder5: "",
       forward1: "",
       forward2: "",
       forward3: "",
@@ -86,6 +88,10 @@ class FormExampleSubcomponentControl extends Component {
     this.setState({ defender4: data.value });
   };
 
+  handleChangeDef5 = (event, data) => {
+    this.setState({ defender5: data.value });
+  };
+
   handleChangeMid1 = (event, data) => {
     this.setState({ midfielder1: data.value });
   };
@@ -97,6 +103,9 @@ class FormExampleSubcomponentControl extends Component {
   };
   handleChangeMid4 = (event, data) => {
     this.setState({ midfielder4: data.value });
+  };
+  handleChangeMid5 = (event, data) => {
+    this.setState({ midfielder5: data.value });
   };
 
   handleChangeForw1 = (event, data) => {
@@ -127,10 +136,12 @@ class FormExampleSubcomponentControl extends Component {
     team_list.push(this.state.defender2);
     team_list.push(this.state.defender3);
     team_list.push(this.state.defender4);
+    team_list.push(this.state.defender5);
     team_list.push(this.state.midfielder1);
     team_list.push(this.state.midfielder2);
     team_list.push(this.state.midfielder3);
     team_list.push(this.state.midfielder4);
+    team_list.push(this.state.midfielder5);
     team_list.push(this.state.forward1);
     team_list.push(this.state.forward2);
     team_list.push(this.state.forward3);
@@ -338,10 +349,23 @@ class FormExampleSubcomponentControl extends Component {
     }
     this.setState({ score: results });
     this.setState({ value: vals });
-    if (this.state.gameWeek === 1 || this.state.goalkeeper1 === "" || this.state.goalkeeper2 === "" ||
-      this.state.defender1 === "" || this.state.defender2 === "" || this.state.defender3 === "" || this.state.defender4 === "" ||
-      this.state.midfielder1 === "" || this.state.midfielder2 === "" || this.state.midfielder3 === "" || this.state.midfielder4 === "" ||
-      this.state.forward1 === "" || this.state.forward2 === "" || this.state.forward3 === ""
+    if (
+      this.state.gameWeek === 1 ||
+      this.state.goalkeeper1 === "" ||
+      this.state.goalkeeper2 === "" ||
+      this.state.defender1 === "" ||
+      this.state.defender2 === "" ||
+      this.state.defender3 === "" ||
+      this.state.defender4 === "" ||
+      this.state.defender5 === "" ||
+      this.state.midfielder1 === "" ||
+      this.state.midfielder2 === "" ||
+      this.state.midfielder3 === "" ||
+      this.state.midfielder4 === "" ||
+      this.state.midfielder5 === "" ||
+      this.state.forward1 === "" ||
+      this.state.forward2 === "" ||
+      this.state.forward3 === ""
     ) {
       this.setState({ noneError: true });
     } else {
@@ -354,19 +378,35 @@ class FormExampleSubcomponentControl extends Component {
       this.setState({ valueError: true });
       error = true;
     }
-    if ((this.state.goalkeeper1 === this.state.goalkeeper2) ||
-      (this.state.defender1 === this.state.defender2 || this.state.defender1 === this.state.defender3 ||
-        this.state.defender1 === this.state.defender4 || this.state.defender2 === this.state.defender3
-        || this.state.defender2 === this.state.defender4 || this.state.defender3 === this.state.defender4) ||
-      (this.state.midfielder1 === this.state.midfielder2 || this.state.midfielder1 === this.state.midfielder3 ||
-        this.state.midfielder1 === this.state.midfielder4 || this.state.midfielder2 === this.state.midfielder3
-        || this.state.midfielder2 === this.state.midfielder4 || this.state.midfielder3 === this.state.midfielder4) ||
-      (this.state.forward1 === this.state.forward2 || this.state.forward1 === this.state.forward3 ||
-        this.state.forward2 === this.state.forward3)) {
+    if (
+      this.state.goalkeeper1 === this.state.goalkeeper2 ||
+      this.state.defender1 === this.state.defender2 ||
+      this.state.defender1 === this.state.defender3 ||
+      this.state.defender1 === this.state.defender4 ||
+      this.state.defender1 === this.state.defender5 ||
+      this.state.defender2 === this.state.defender3 ||
+      this.state.defender2 === this.state.defender4 ||
+      this.state.defender2 === this.state.defender5 ||
+      this.state.defender3 === this.state.defender4 ||
+      this.state.defender3 === this.state.defender5 ||
+      this.state.defender4 === this.state.defender5 ||
+      this.state.midfielder1 === this.state.midfielder2 ||
+      this.state.midfielder1 === this.state.midfielder3 ||
+      this.state.midfielder1 === this.state.midfielder4 ||
+      this.state.midfielder1 === this.state.midfielder5 ||
+      this.state.midfielder2 === this.state.midfielder3 ||
+      this.state.midfielder2 === this.state.midfielder4 ||
+      this.state.midfielder2 === this.state.midfielder5 ||
+      this.state.midfielder3 === this.state.midfielder4 ||
+      this.state.midfielder3 === this.state.midfielder5 ||
+      this.state.midfielder4 === this.state.midfielder5 ||
+      this.state.forward1 === this.state.forward2 ||
+      this.state.forward1 === this.state.forward3 ||
+      this.state.forward2 === this.state.forward3
+    ) {
       this.setState({ samePlayerError: true });
     } else {
       this.setState({ samePlayerError: false });
-
     }
     if (error) {
       this.setState({ formError: true });
@@ -385,7 +425,10 @@ class FormExampleSubcomponentControl extends Component {
             Team Selection Form
           </Header>
           <Form warning>
-            <Message warning>Please only choose a player once and make sure your team's total value doesn't exceed 1000!</Message>
+            <Message warning>
+              Please only choose a player once and make sure your team's total
+              value doesn't exceed 1000!
+            </Message>
             <Grid columns={4} padded>
               <Grid.Column>
                 <Form.Field padded="very">
@@ -406,9 +449,7 @@ class FormExampleSubcomponentControl extends Component {
                     search
                     selection
                     options={PlayersGK}
-                    onChange={
-                      this.handleChange1
-                    }
+                    onChange={this.handleChange1}
                   />
                 </Form.Field>
                 <Form.Field padded="very">
@@ -469,6 +510,17 @@ class FormExampleSubcomponentControl extends Component {
                     onChange={this.handleChangeDef4}
                   />
                 </Form.Field>
+                <Form.Field padded="very">
+                  <label>Choose Defender 5</label>
+                  <Dropdown
+                    placeholder="Player"
+                    fluid
+                    search
+                    selection
+                    options={PlayersDef}
+                    onChange={this.handleChangeDef5}
+                  />
+                </Form.Field>
               </Grid.Column>
               <Grid.Column>
                 <Form.Field padded="very">
@@ -513,6 +565,17 @@ class FormExampleSubcomponentControl extends Component {
                     selection
                     options={PlayersMid}
                     onChange={this.handleChangeMid4}
+                  />
+                </Form.Field>
+                <Form.Field padded="very">
+                  <label>Choose Midfielder 5</label>
+                  <Dropdown
+                    placeholder="Player"
+                    fluid
+                    search
+                    selection
+                    options={PlayersMid}
+                    onChange={this.handleChangeMid5}
                   />
                 </Form.Field>
               </Grid.Column>
@@ -574,83 +637,88 @@ class FormExampleSubcomponentControl extends Component {
             <Modal.Header>Game Week {this.state.gameWeek} Teams</Modal.Header>
             <Modal.Content image>
               <Modal.Description>
-                <Message color='purple' inverted tertiary>{
-                  (this.state.noneError) ?
-                    <Segment color='red' inverted tertiary>
+                <Message color="purple" inverted tertiary>
+                  {this.state.noneError ? (
+                    <Segment color="red" inverted tertiary>
                       <Header color="white">Form Error </Header>
                       <p>Looks like you didn't finish the form!</p>
-                    </Segment> :
-                    (this.state.valueError && this.state.samePlayerError) ?
-                      <Segment color='red' inverted tertiary>
-                        <Header color="white">Form Error </Header>
-                        <p>It looks like you chose the same player for multiple positions and the total value of team exceeds 1000, please choose again</p>
-                      </Segment> :
-
-                      (this.state.samePlayerError) ?
-                        <Segment color='red' inverted tertiary>
-                          <Header color="white">Form Error </Header>
-                          <p>It looks like you chose the same player for multiple positions, please choose again</p>
-                        </Segment> :
-                        (this.state.valueError) ?
-                          <Segment color='red' inverted tertiary>
-                            <Header color="white">Form Error </Header>
-                            <p>Total value of team exceeds 1000, please choose again</p>
-                          </Segment>
-
-                          :
-                          <Segment>
-                            <Image size="medium" src={ModalPic} rounded centered />
-                            <Grid columns={2} padded>
-                              <Grid.Column>
-
-                                <Header>Your Team </Header>
-                                <p>
-                                  <b>Score:</b> {this.state.score}{" "}
-                                </p>
-                                <p>
-                                  <b>Total Value of Team: </b> {this.state.value}{" "}
-                                </p>
-                                <p>
-                                  <b>Goal Keepers:</b> {this.state.goalkeeper1},{" "}
-                                  {this.state.goalkeeper2}
-                                </p>
-                                <p>
-                                  <b>Defenders:</b> {this.state.defender1},{" "}
-                                  {this.state.defender2}, {this.state.defender3},{" "}
-                                  {this.state.defender4}
-                                </p>
-                                <p>
-                                  <b>Midfielders:</b> {this.state.midfielder1},{" "}
-                                  {this.state.midfielder2}, {this.state.midfielder3},{" "}
-                                  {this.state.midfielder4}
-                                </p>
-                                <p>
-                                  <b>Forwards:</b> {this.state.forward1},{" "}
-                                  {this.state.forward2}, {this.state.forward3}
-                                </p>
-                              </Grid.Column>
-                              <Grid.Column>
-                                <Header>AI Team </Header>
-                                <p>
-                                  <b>Score:</b>{" "}
-                                </p>
-                                <p>
-                                  <b>Goal Keepers:</b>{" "}
-                                </p>
-                                <p>
-                                  <b>Defenders:</b>{" "}
-                                </p>
-                                <p>
-                                  <b>Midfielders:</b>{" "}
-                                </p>
-                                <p>
-                                  <b>Forwards:</b>{" "}
-                                </p>
-
-                              </Grid.Column>
-                            </Grid>
-                          </Segment>
-                }
+                    </Segment>
+                  ) : this.state.valueError && this.state.samePlayerError ? (
+                    <Segment color="red" inverted tertiary>
+                      <Header color="white">Form Error </Header>
+                      <p>
+                        It looks like you chose the same player for multiple
+                        positions and the total value of team exceeds 1000,
+                        please choose again
+                      </p>
+                    </Segment>
+                  ) : this.state.samePlayerError ? (
+                    <Segment color="red" inverted tertiary>
+                      <Header color="white">Form Error </Header>
+                      <p>
+                        It looks like you chose the same player for multiple
+                        positions, please choose again
+                      </p>
+                    </Segment>
+                  ) : this.state.valueError ? (
+                    <Segment color="red" inverted tertiary>
+                      <Header color="white">Form Error </Header>
+                      <p>
+                        Total value of team exceeds 1000, please choose again
+                      </p>
+                    </Segment>
+                  ) : (
+                    <Segment>
+                      <Image size="medium" src={ModalPic} rounded centered />
+                      <Grid columns={2} padded>
+                        <Grid.Column>
+                          <Header>Your Team </Header>
+                          <p>
+                            <b>Score:</b> {this.state.score}{" "}
+                          </p>
+                          <p>
+                            <b>Total Value of Team: </b> {this.state.value}{" "}
+                          </p>
+                          <p>
+                            <b>Goal Keepers:</b> {this.state.goalkeeper1},{" "}
+                            {this.state.goalkeeper2}
+                          </p>
+                          <p>
+                            <b>Defenders:</b> {this.state.defender1},{" "}
+                            {this.state.defender2}, {this.state.defender3},{" "}
+                            {this.state.defender4}, {this.state.defender5}
+                          </p>
+                          <p>
+                            <b>Midfielders:</b> {this.state.midfielder1},{" "}
+                            {this.state.midfielder2}, {this.state.midfielder3},{" "}
+                            {this.state.midfielder4}, {this.state.midfielder5}
+                          </p>
+                          <p>
+                            <b>Forwards:</b> {this.state.forward1},{" "}
+                            {this.state.forward2}, {this.state.forward3}
+                          </p>
+                        </Grid.Column>
+                        <Grid.Column>
+                          <Header>AI Team </Header>
+                          <p>
+                            <b>Score:</b>{" "}
+                          </p>
+                          <p>
+                            <b>Goal Keepers:</b>{" "}
+                          </p>
+                          <p>
+                            <b>Defenders:</b>{" "}
+                          </p>
+                          <p>
+                            <b>Midfielders:</b>{" "}
+                          </p>
+                          <p>
+                            <b>Forwards:</b>{" "}
+                          </p>
+                        </Grid.Column>
+                      </Grid>
+                    </Segment>
+                  )}
                 </Message>
               </Modal.Description>
             </Modal.Content>
