@@ -17,7 +17,9 @@ import PlayersFwd from "./player_fwd.json";
 import PlayersMid from "./player_mid.json";
 import PlayerScores from "./combined_gw_2.json";
 import PlayerValues from "./combined_gw_3.json";
+import PlayerPoints from "./combined_gw_4.json";
 import ModalPic from "./modal_pic.png";
+import NNTeams from "./nn_teams_by_gw.json";
 
 class FormExampleSubcomponentControl extends Component {
   constructor(props) {
@@ -38,6 +40,23 @@ class FormExampleSubcomponentControl extends Component {
       forward1: "",
       forward2: "",
       forward3: "",
+
+      goalkeeper1nn: "",
+      goalkeeper2nn: "",
+      defender1nn: "",
+      defender2nn: "",
+      defender3nn: "",
+      defender4nn: "",
+      defender5nn: "",
+      midfielder1nn: "",
+      midfielder2nn: "",
+      midfielder3nn: "",
+      midfielder4nn: "",
+      midfielder5nn: "",
+      forward1nn: "",
+      forward2nn: "",
+      forward3nn: "",
+      scorenn: "",
       gameWeek: 1,
       score: 0,
       value: 0,
@@ -54,15 +73,6 @@ class FormExampleSubcomponentControl extends Component {
       },
     };
   }
-
-  // submitForm(){
-  // if (this.state.value >= 1000) {
-  //   this.setState({valueError: true})
-  //   error = true
-  // } else {
-  //   this.setState({valueError: false})
-  //   error = false
-  // };
 
   handleChange1 = (event, data) => {
     this.setState({ goalkeeper1: data.value });
@@ -127,8 +137,10 @@ class FormExampleSubcomponentControl extends Component {
     var results = 0;
     var vals = 0;
     //for goalkeeper 1
-    const player_scores = PlayerScores;
+    //const player_scores = PlayerScores;
     const player_values = PlayerValues;
+    const player_points = PlayerPoints;
+    const nn_teams = NNTeams;
     var team_list = [];
     team_list.push(this.state.goalkeeper1);
     team_list.push(this.state.goalkeeper2);
@@ -145,210 +157,232 @@ class FormExampleSubcomponentControl extends Component {
     team_list.push(this.state.forward1);
     team_list.push(this.state.forward2);
     team_list.push(this.state.forward3);
-    for (var i = 0; i < player_scores.length; i++) {
-      var player = player_scores[i];
+    for (var i = 0; i < nn_teams.length; i++) {
+      var team = nn_teams[i];
+      if (this.state.gameWeek == Number(team.gameweek)) {
+        this.setState({ goalkeeper1nn: team.goalkeeper1 });
+        this.setState({ goalkeeper2nn: team.goalkeeper2 });
+        this.setState({ defender1nn: team.defender1 });
+        this.setState({ defender2nn: team.defender2 });
+        this.setState({ defender3nn: team.defender3 });
+        this.setState({ defender4nn: team.defender4 });
+        this.setState({ defender5nn: team.defender5 });
+        this.setState({ forward1nn: team.forward1 });
+        this.setState({ forward2nn: team.forward2 });
+        this.setState({ forward3nn: team.forward3 });
+        this.setState({ scorenn: team.score });
+        this.setState({ midfielder1nn: team.midfielder1 });
+        this.setState({ midfielder2nn: team.midfielder2 });
+        this.setState({ midfielder3nn: team.midfielder3 });
+        this.setState({ midfielder4nn: team.midfielder4 });
+        this.setState({ midfielder5nn: team.midfielder5 });
+      }
+    }
+    for (var i = 0; i < player_points.length; i++) {
+      var player = player_points[i];
       var player1 = player_values[i];
       if (team_list.includes(player.name)) {
         if (Number(this.state.gameWeek) == 1) {
           results +=
-            Number(player.team_a_score_1) + Number(player.team_h_score_1);
+            Number(player.total_points_1);
           vals += Number(player1.value_1);
         }
         if (Number(this.state.gameWeek) == 2) {
           results +=
-            Number(player.team_a_score_2) + Number(player.team_h_score_2);
+            Number(player.total_points_2);
           vals += Number(player1.value_2);
         }
         if (Number(this.state.gameWeek) == 3) {
           results +=
-            Number(player.team_a_score_3) + Number(player.team_h_score_3);
+            Number(player.total_points_3);
           vals += Number(player1.value_3);
         }
         if (Number(this.state.gameWeek) == 4) {
           results +=
-            Number(player.team_a_score_4) + Number(player.team_h_score_4);
+            Number(player.total_points_4);
           vals += Number(player1.value_4);
         }
         if (Number(this.state.gameWeek) == 5) {
           results +=
-            Number(player.team_a_score_5) + Number(player.team_h_score_5);
+            Number(player.total_points_5);
           vals += Number(player1.value_5);
         }
         if (Number(this.state.gameWeek) == 6) {
           results +=
-            Number(player.team_a_score_6) + Number(player.team_h_score_6);
+            Number(player.total_points_6);
           vals += Number(player1.value_6);
         }
         if (Number(this.state.gameWeek) == 7) {
           results +=
-            Number(player.team_a_score_7) + Number(player.team_h_score_7);
+            Number(player.total_points_7);
           vals += Number(player1.value_7);
         }
         if (Number(this.state.gameWeek) == 8) {
           results +=
-            Number(player.team_a_score_8) + Number(player.team_h_score_8);
+            Number(player.total_points_8);
           vals += Number(player1.value_8);
         }
         if (Number(this.state.gameWeek) == 9) {
           results +=
-            Number(player.team_a_score_9) + Number(player.team_h_score_9);
+            Number(player.total_points_9);
           vals += Number(player1.value_9);
         }
         if (Number(this.state.gameWeek) == 10) {
           results +=
-            Number(player.team_a_score_10) + Number(player.team_h_score_10);
+            Number(player.total_points_10);
           vals += Number(player1.value_10);
         }
         if (Number(this.state.gameWeek) == 11) {
           results +=
-            Number(player.team_a_score_11) + Number(player.team_h_score_11);
+            Number(player.total_points_11);
           vals += Number(player1.value_11);
         }
         if (Number(this.state.gameWeek) == 12) {
           results +=
-            Number(player.team_a_score_12) + Number(player.team_h_score_12);
+            Number(player.total_points_12);
           vals += Number(player1.value_12);
         }
         if (Number(this.state.gameWeek) == 13) {
           results +=
-            Number(player.team_a_score_13) + Number(player.team_h_score_13);
+            Number(player.total_points_13);
           vals += Number(player1.value_13);
         }
         if (Number(this.state.gameWeek) == 14) {
           results +=
-            Number(player.team_a_score_14) + Number(player.team_h_score_14);
+            Number(player.total_points_14);
           vals += Number(player1.value_14);
         }
         if (Number(this.state.gameWeek) == 15) {
           results +=
-            Number(player.team_a_score_15) + Number(player.team_h_score_15);
+            Number(player.total_points_15);
           vals += Number(player1.value_15);
         }
         if (Number(this.state.gameWeek) == 16) {
           results +=
-            Number(player.team_a_score_16) + Number(player.team_h_score_16);
+            Number(player.total_points_16);
           vals += Number(player1.value_16);
         }
         if (Number(this.state.gameWeek) == 17) {
           results +=
-            Number(player.team_a_score_17) + Number(player.team_h_score_17);
+            Number(player.total_points_17);
           vals += Number(player1.value_17);
         }
         if (Number(this.state.gameWeek) == 18) {
           results +=
-            Number(player.team_a_score_18) + Number(player.team_h_score_18);
+            Number(player.total_points_18);
           vals += Number(player1.value_18);
         }
         if (Number(this.state.gameWeek) == 19) {
           results +=
-            Number(player.team_a_score_19) + Number(player.team_h_score_19);
+            Number(player.total_points_19);
           vals += Number(player1.value_19);
         }
         if (Number(this.state.gameWeek) == 20) {
           results +=
-            Number(player.team_a_score_20) + Number(player.team_h_score_20);
+            Number(player.total_points_20);
           vals += Number(player1.value_20);
         }
 
         if (Number(this.state.gameWeek) == 21) {
           results +=
-            Number(player.team_a_score_21) + Number(player.team_h_score_21);
+            Number(player.total_points_21);
           vals += Number(player1.value_21);
         }
 
         if (Number(this.state.gameWeek) == 22) {
           results +=
-            Number(player.team_a_score_22) + Number(player.team_h_score_22);
+            Number(player.total_points_22);
           vals += Number(player1.value_22);
         }
 
         if (Number(this.state.gameWeek) == 23) {
           results +=
-            Number(player.team_a_score_23) + Number(player.team_h_score_23);
+            Number(player.total_points_23);
           vals += Number(player1.value_23);
         }
 
         if (Number(this.state.gameWeek) == 24) {
           results +=
-            Number(player.team_a_score_24) + Number(player.team_h_score_24);
+            Number(player.total_points_24);
           vals += Number(player1.value_24);
         }
 
         if (Number(this.state.gameWeek) == 25) {
           results +=
-            Number(player.team_a_score_25) + Number(player.team_h_score_25);
+            Number(player.total_points_25);
           vals += Number(player1.value_25);
         }
         if (Number(this.state.gameWeek) == 26) {
           results +=
-            Number(player.team_a_score_26) + Number(player.team_h_score_26);
+            Number(player.total_points_26)
           vals += Number(player1.value_26);
         }
         if (Number(this.state.gameWeek) == 27) {
           results +=
-            Number(player.team_a_score_27) + Number(player.team_h_score_27);
+            Number(player.total_points_27);
           vals += Number(player1.value_27);
         }
         if (Number(this.state.gameWeek) == 28) {
           results +=
-            Number(player.team_a_score_28) + Number(player.team_h_score_28);
+            Number(player.total_points_28);
           vals += Number(player1.value_28);
         }
         if (Number(this.state.gameWeek) == 29) {
           results +=
-            Number(player.team_a_score_29) + Number(player.team_h_score_29);
+            Number(player.total_points_29);
           vals += Number(player1.value_29);
         }
         if (Number(this.state.gameWeek) == 30) {
           results +=
-            Number(player.team_a_score_30) + Number(player.team_h_score_30);
+            Number(player.total_points_30);
           vals += Number(player1.value_30);
         }
         if (Number(this.state.gameWeek) == 31) {
           results +=
-            Number(player.team_a_score_31) + Number(player.team_h_score_31);
+            Number(player.total_points_31);
           vals += Number(player1.value_31);
         }
         if (Number(this.state.gameWeek) == 32) {
           results +=
-            Number(player.team_a_score_32) + Number(player.team_h_score_32);
+            Number(player.total_points_32);
           vals += Number(player1.value_32);
         }
         if (Number(this.state.gameWeek) == 33) {
           results +=
-            Number(player.team_a_score_33) + Number(player.team_h_score_33);
+            Number(player.total_points_33);
           vals += Number(player1.value_33);
         }
 
         if (Number(this.state.gameWeek) == 34) {
           results +=
-            Number(player.team_a_score_34) + Number(player.team_h_score_34);
+            Number(player.total_points_34);
           vals += Number(player1.value_34);
         }
         if (Number(this.state.gameWeek) == 35) {
           results +=
-            Number(player.team_a_score_35) + Number(player.team_h_score_35);
+            Number(player.total_points_35);
           vals += Number(player1.value_35);
         }
         if (Number(this.state.gameWeek) == 36) {
           results +=
-            Number(player.team_a_score_36) + Number(player.team_h_score_36);
+            Number(player.total_points_36);
           vals += Number(player1.value_36);
         }
         if (Number(this.state.gameWeek) == 37) {
           results +=
-            Number(player.team_a_score_37) + Number(player.team_h_score_37);
+            Number(player.total_points_37);
           vals += Number(player1.value_37);
         }
         if (Number(this.state.gameWeek) == 38) {
           results +=
-            Number(player.team_a_score_38) + Number(player.team_h_score_38);
+            Number(player.total_points_38);
           vals += Number(player1.value_38);
         }
       }
     }
     this.setState({ score: results });
     this.setState({ value: vals });
+
     if (
       this.state.gameWeek === 1 ||
       this.state.goalkeeper1 === "" ||
@@ -668,57 +702,75 @@ class FormExampleSubcomponentControl extends Component {
                       </p>
                     </Segment>
                   ) : (
-                    <Segment>
-                      <Image size="medium" src={ModalPic} rounded centered />
-                      <Grid columns={2} padded>
-                        <Grid.Column>
-                          <Header>Your Team </Header>
-                          <p>
-                            <b>Score:</b> {this.state.score}{" "}
-                          </p>
-                          <p>
-                            <b>Total Value of Team: </b> {this.state.value}{" "}
-                          </p>
-                          <p>
-                            <b>Goal Keepers:</b> {this.state.goalkeeper1},{" "}
-                            {this.state.goalkeeper2}
-                          </p>
-                          <p>
-                            <b>Defenders:</b> {this.state.defender1},{" "}
-                            {this.state.defender2}, {this.state.defender3},{" "}
-                            {this.state.defender4}, {this.state.defender5}
-                          </p>
-                          <p>
-                            <b>Midfielders:</b> {this.state.midfielder1},{" "}
-                            {this.state.midfielder2}, {this.state.midfielder3},{" "}
-                            {this.state.midfielder4}, {this.state.midfielder5}
-                          </p>
-                          <p>
-                            <b>Forwards:</b> {this.state.forward1},{" "}
-                            {this.state.forward2}, {this.state.forward3}
-                          </p>
-                        </Grid.Column>
-                        <Grid.Column>
-                          <Header>AI Team </Header>
-                          <p>
-                            <b>Score:</b>{" "}
-                          </p>
-                          <p>
-                            <b>Goal Keepers:</b>{" "}
-                          </p>
-                          <p>
-                            <b>Defenders:</b>{" "}
-                          </p>
-                          <p>
-                            <b>Midfielders:</b>{" "}
-                          </p>
-                          <p>
-                            <b>Forwards:</b>{" "}
-                          </p>
-                        </Grid.Column>
-                      </Grid>
-                    </Segment>
-                  )}
+                            <Segment>
+                              <Image size="medium" src={ModalPic} rounded centered />
+                              <Grid columns={2} padded>
+                                <Grid.Column>
+                                  <Header>Your Team </Header>
+                                  <p><b>Score:</b> {this.state.score}{" "} </p>
+                                  <p><b>Goal Keepers:</b></p>
+                                  <ul>
+                                    <li>{this.state.goalkeeper1}</li>
+                                    <li>{this.state.goalkeeper2}</li>
+                                  </ul>
+                                  <p><b>Defenders:</b></p>
+                                  <ul>
+                                    <li>{this.state.defender1}</li>
+                                    <li>{this.state.defender2}</li>
+                                    <li>{this.state.defender3}</li>
+                                    <li>{this.state.defender4}</li>
+                                    <li>{this.state.defender5}</li>
+                                  </ul>
+                                  <p><b>Midfielders:</b></p>
+                                  <ul>
+                                    <li>{this.state.midfielder1}</li>
+                                    <li>{this.state.midfielder2}</li>
+                                    <li>{this.state.midfielder3}</li>
+                                    <li>{this.state.midfielder4}</li>
+                                    <li>{this.state.midfielder5}</li>
+                                  </ul>
+                                  <p><b>Forwards:</b></p>
+                                  <ul>
+                                    <li>{this.state.forward1}</li>
+                                    <li>{this.state.forward2}</li>
+                                    <li>{this.state.forward3}</li>
+                                  </ul>
+                                </Grid.Column>
+                                <Grid.Column>
+                                  <Header>AI Team</Header>
+                                  <p><b>Score:</b> {this.state.scorenn}{" "} </p>
+                                  <p><b>Goal Keepers:</b></p>
+                                  <ul>
+                                    <li>{this.state.goalkeeper1nn}</li>
+                                    <li>{this.state.goalkeeper2nn}</li>
+                                  </ul>
+                                  <p><b>Defenders:</b></p>
+                                  <ul>
+                                    <li>{this.state.defender1nn}</li>
+                                    <li>{this.state.defender2nn}</li>
+                                    <li>{this.state.defender3nn}</li>
+                                    <li>{this.state.defender4nn}</li>
+                                    <li>{this.state.defender5nn}</li>
+                                  </ul>
+                                  <p><b>Midfielders:</b></p>
+                                  <ul>
+                                    <li>{this.state.midfielder1nn}</li>
+                                    <li>{this.state.midfielder2nn}</li>
+                                    <li>{this.state.midfielder3nn}</li>
+                                    <li>{this.state.midfielder4nn}</li>
+                                    <li>{this.state.midfielder5nn}</li>
+                                  </ul>
+                                  <p><b>Forwards:</b></p>
+                                  <ul>
+                                    <li>{this.state.forward1nn}</li>
+                                    <li>{this.state.forward2nn}</li>
+                                    <li>{this.state.forward3nn}</li>
+                                  </ul>
+                                </Grid.Column>
+
+                              </Grid>
+                            </Segment>
+                          )}
                 </Message>
               </Modal.Description>
             </Modal.Content>

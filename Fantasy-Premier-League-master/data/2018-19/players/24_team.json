@@ -1,1 +1,21 @@
-[{"goalkeeper1": "David de Gea", "goalkeeper2": "Ben Foster", "defender1": "Sokratis Papastathopoulos", "defender2": "Kurt Zouma", "defender3": "Ricardo Domingos Barbosa Pereira", "defender4": "Andrew Robertson", "defender5": "Aymeric Laporte", "midfielder1": "Paul Pogba", "midfielder2": "Mohamed Salah", "midfielder3": "Leroy San\u00e9", "midfielder4": "David Brooks", "midfielder5": "Christian Eriksen", "forward1": "Marcus Rashford", "forward2": "Salom\u00f3n Rond\u00f3n", "forward3": "Joshua King", "gameweek": "24", "score": "63"}]
+[
+  {
+    "goalkeeper1": "David de Gea",
+    "goalkeeper2": "Ben Foster",
+    "defender1": "Sokratis Papastathopoulos",
+    "defender2": "Kurt Zouma",
+    "defender3": "Ricardo Domingos Barbosa Pereira",
+    "defender4": "Andrew Robertson",
+    "defender5": "Aymeric Laporte",
+    "midfielder1": "Paul Pogba",
+    "midfielder2": "Mohamed Salah",
+    "midfielder3": "Leroy San\u00e9",
+    "midfielder4": "David Brooks",
+    "midfielder5": "Christian Eriksen",
+    "forward1": "Marcus Rashford",
+    "forward2": "Salom\u00f3n Rond\u00f3n",
+    "forward3": "Joshua King",
+    "gameweek": "24",
+    "score": "63"
+  }
+]

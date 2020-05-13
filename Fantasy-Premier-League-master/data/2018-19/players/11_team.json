@@ -1,1 +1,21 @@
-[{"goalkeeper1": "Jordan Pickford", "goalkeeper2": "Mathew Ryan", "defender1": "Antonio R\u00fcdiger", "defender2": "Nathan Ak\u00e9", "defender3": "Shane Duffy", "defender4": "Lewis Dunk", "defender5": "Francisco Femen\u00eda Far", "midfielder1": "Mohamed Salah", "midfielder2": "Ross Barkley", "midfielder3": "David Silva", "midfielder4": "Riyad Mahrez", "midfielder5": "Paul Pogba", "forward1": "Pierre-Emerick Aubameyang", "forward2": "Callum Wilson", "forward3": "Sergio Ag\u00fcero", "gameweek": "11", "score": "50"}]
+[
+  {
+    "goalkeeper1": "Jordan Pickford",
+    "goalkeeper2": "Mathew Ryan",
+    "defender1": "Antonio R\u00fcdiger",
+    "defender2": "Nathan Ak\u00e9",
+    "defender3": "Shane Duffy",
+    "defender4": "Lewis Dunk",
+    "defender5": "Francisco Femen\u00eda Far",
+    "midfielder1": "Mohamed Salah",
+    "midfielder2": "Ross Barkley",
+    "midfielder3": "David Silva",
+    "midfielder4": "Riyad Mahrez",
+    "midfielder5": "Paul Pogba",
+    "forward1": "Pierre-Emerick Aubameyang",
+    "forward2": "Callum Wilson",
+    "forward3": "Sergio Ag\u00fcero",
+    "gameweek": "11",
+    "score": "50"
+  }
+]

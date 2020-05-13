@@ -1,1 +1,21 @@
-[{"goalkeeper1": "Neil Etheridge", "goalkeeper2": "Jonas L\u00f6ssl", "defender1": "James Tarkowski", "defender2": "Sol Bamba", "defender3": "Virgil van Dijk", "defender4": "Ricardo Domingos Barbosa Pereira", "defender5": "David Luiz Moreira Marinho", "midfielder1": "Paul Pogba", "midfielder2": "Heung-Min Son", "midfielder3": "Eden Hazard", "midfielder4": "Abdoulaye Doucour\u00e9", "midfielder5": "Felipe Anderson Pereira Gomes", "forward1": "Roberto Firmino", "forward2": "Marcus Rashford", "forward3": "Aleksandar Mitrovic", "gameweek": "21", "score": "68"}]
+[
+  {
+    "goalkeeper1": "Neil Etheridge",
+    "goalkeeper2": "Jonas L\u00f6ssl",
+    "defender1": "James Tarkowski",
+    "defender2": "Sol Bamba",
+    "defender3": "Virgil van Dijk",
+    "defender4": "Ricardo Domingos Barbosa Pereira",
+    "defender5": "David Luiz Moreira Marinho",
+    "midfielder1": "Paul Pogba",
+    "midfielder2": "Heung-Min Son",
+    "midfielder3": "Eden Hazard",
+    "midfielder4": "Abdoulaye Doucour\u00e9",
+    "midfielder5": "Felipe Anderson Pereira Gomes",
+    "forward1": "Roberto Firmino",
+    "forward2": "Marcus Rashford",
+    "forward3": "Aleksandar Mitrovic",
+    "gameweek": "21",
+    "score": "68"
+  }
+]

@@ -1,1 +1,21 @@
-[{"goalkeeper1": "Ben Foster", "goalkeeper2": "Lukasz Fabianski", "defender1": "Virgil van Dijk", "defender2": "Matt Doherty", "defender3": "Fabian Sch\u00e4r", "defender4": "Kieran Trippier", "defender5": "Jamaal Lascelles", "midfielder1": "Heung-Min Son", "midfielder2": "Mohamed Salah", "midfielder3": "Eden Hazard", "midfielder4": "Abdoulaye Doucour\u00e9", "midfielder5": "Jesse Lingard", "forward1": "Harry Kane", "forward2": "Pierre-Emerick Aubameyang", "forward3": "Roberto Firmino", "gameweek": "19", "score": "74"}]
+[
+  {
+    "goalkeeper1": "Ben Foster",
+    "goalkeeper2": "Lukasz Fabianski",
+    "defender1": "Virgil van Dijk",
+    "defender2": "Matt Doherty",
+    "defender3": "Fabian Sch\u00e4r",
+    "defender4": "Kieran Trippier",
+    "defender5": "Jamaal Lascelles",
+    "midfielder1": "Heung-Min Son",
+    "midfielder2": "Mohamed Salah",
+    "midfielder3": "Eden Hazard",
+    "midfielder4": "Abdoulaye Doucour\u00e9",
+    "midfielder5": "Jesse Lingard",
+    "forward1": "Harry Kane",
+    "forward2": "Pierre-Emerick Aubameyang",
+    "forward3": "Roberto Firmino",
+    "gameweek": "19",
+    "score": "74"
+  }
+]

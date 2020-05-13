@@ -1,1 +1,21 @@
-[{"goalkeeper1": "Ederson Santana de Moraes", "goalkeeper2": "Sergio Rico", "defender1": "Kurt Zouma", "defender2": "Trent Alexander-Arnold", "defender3": "C\u00e9sar Azpilicueta", "defender4": "Virgil van Dijk", "defender5": "Lucas Digne", "midfielder1": "Mohamed Salah", "midfielder2": "Ryan Fraser", "midfielder3": "Eden Hazard", "midfielder4": "Christian Eriksen", "midfielder5": "Matt Ritchie", "forward1": "Ayoze P\u00e9rez", "forward2": "Chris Wood", "forward3": "Aleksandar Mitrovic", "gameweek": "36", "score": "90"}]
+[
+  {
+    "goalkeeper1": "Ederson Santana de Moraes",
+    "goalkeeper2": "Sergio Rico",
+    "defender1": "Kurt Zouma",
+    "defender2": "Trent Alexander-Arnold",
+    "defender3": "C\u00e9sar Azpilicueta",
+    "defender4": "Virgil van Dijk",
+    "defender5": "Lucas Digne",
+    "midfielder1": "Mohamed Salah",
+    "midfielder2": "Ryan Fraser",
+    "midfielder3": "Eden Hazard",
+    "midfielder4": "Christian Eriksen",
+    "midfielder5": "Matt Ritchie",
+    "forward1": "Ayoze P\u00e9rez",
+    "forward2": "Chris Wood",
+    "forward3": "Aleksandar Mitrovic",
+    "gameweek": "36",
+    "score": "90"
+  }
+]
