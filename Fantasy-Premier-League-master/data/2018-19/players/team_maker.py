@@ -11,14 +11,24 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 import tensorflow as tf
 
-estimator = nn.estimator
-
-
-gw = 38 # we get this input from the front end 
-
+estimator = nn.load("regression_model_1589350290.h5")
 cols = ['assists','big_chances_created','clean_sheets','clearances_blocks_interceptions','dribbles','errors_leading_to_goal','ict_index','key_passes','penalties_missed','penalties_saved','total_points']
 
-def make_def_lst(position_num):
+def get_position_lists(gw):
+    def_lst = make_def_lst(2, gw)
+    def_lst = first_elem(sort_lst_of_lsts(def_lst))
+
+    mid_lst = make_def_lst(3, gw)
+    mid_lst = first_elem(sort_lst_of_lsts(mid_lst))
+
+    gk_lst = make_def_lst(1, gw)
+    gk_lst = first_elem(sort_lst_of_lsts(gk_lst))
+
+    fwd_lst = make_def_lst(4, gw)
+    fwd_lst = first_elem(sort_lst_of_lsts(fwd_lst))
+    return gk_lst, def_lst, mid_lst, fwd_lst
+
+def make_def_lst(position_num, gw):
     if position_num == 1:
         csv_name = "gk.csv"
     if position_num == 2:
@@ -108,14 +118,4 @@ def first_elem(lst):
         lst_final.append(elem[0])
     return lst_final
 
-def_lst = make_def_lst(2)
-def_lst = first_elem(sort_lst_of_lsts(def_lst))
 
-mid_lst = make_def_lst(3)
-mid_lst = first_elem(sort_lst_of_lsts(mid_lst))
-
-gk_lst = make_def_lst(1)
-gk_lst = first_elem(sort_lst_of_lsts(gk_lst))
-
-fwd_lst = make_def_lst(4)
-fwd_lst = first_elem(sort_lst_of_lsts(fwd_lst))

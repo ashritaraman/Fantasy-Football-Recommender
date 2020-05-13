@@ -1,3 +1,3 @@
 ,goalkeepers,defenders,midfielders,forwards,gameweek,score
-0,"[468, 452]","[245, 247, 141, 113, 482]","[271, 18, 394, 270, 122]","[306, 396, 280]",30,63
-1,"['Alisson Ramses Becker', 'Angus Gunn']","['Trent Alexander-Arnold', 'Andrew Robertson', 'Jeffrey Schlupp', 'César Azpilicueta', 'Fabian Schär']","['David Silva', 'Henrikh Mkhitaryan', 'Gerard Deulofeu', 'Raheem Sterling', 'Eden Hazard']","['Romelu Lukaku', 'Troy Deeney', 'Sergio Agüero']",30,63
+0,"[468, 452]","[245, 247, 141, 406, 113]","[271, 394, 18, 122, 432]","[306, 437, 396]",30,52
+1,"['Alisson Ramses Becker', 'Angus Gunn']","['Trent Alexander-Arnold', 'Andrew Robertson', 'Jeffrey Schlupp', 'Declan Rice', 'César Azpilicueta']","['David Silva', 'Gerard Deulofeu', 'Henrikh Mkhitaryan', 'Eden Hazard', 'Diogo Jota']","['Romelu Lukaku', 'Raúl Jiménez', 'Troy Deeney']",30,52

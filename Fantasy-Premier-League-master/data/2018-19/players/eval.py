@@ -3,11 +3,6 @@ import numpy as np
 import restrictions as rs
 import ranked_players 
 
-gk_lst = rs.gk_lst
-def_lst = rs.def_lst
-mid_lst = rs.mid_lst
-fwd_lst = rs.fwd_lst
-
 # Reversing a string
 def rev_str(s):
     strg_temp = ''
@@ -27,6 +22,7 @@ def name_parse(nm):
     except:
         print("Id not available")
 
+# Main evaluation punction
 def evaluate_team_score(team, gw):
     csv_name = "gw"+str(gw)+".csv"
     df = pd.read_csv(csv_name, usecols = ['name','total_points'], encoding = "cp1252")
@@ -38,14 +34,9 @@ def evaluate_team_score(team, gw):
                 score = score + elem[1]
     return score
 
-team = rs.team
-gw = rs.gw
-# print(ranked_players.player_name_gen(team))
 
-score = evaluate_team_score(team,gw)
-
-
-def team_to_csv(team):
+def team_to_csv(team, pos_lists):
+    gk_lst, def_lst, mid_lst, fwd_lst = pos_lists
     lst1 = [] 
     lst2 = []
     lst3 = [] 
@@ -68,22 +59,35 @@ def team_to_csv(team):
     final_lst.append(score)
     return final_lst
 
-final_lst = team_to_csv(team)
-print(final_lst)
-name_list = []
-i=0
-while i<4:
-    temp_lst = final_lst[i]
-    # n = len(temp_lst)
-    # j = 0 
-    # while j<n:
-    #     temp_lst[j] = int(temp_lst[j])
-    #     j=j+1
-    temp_lst = ranked_players.player_name_gen(temp_lst)
-    name_list.append(temp_lst)
-    i=i+1
-name_list.append(gw)
-name_list.append(score)
+for gw in range(2, 39):
+    print("Building team for GameWeek: {}".format(str(gw)))
+    team, team_list, pos_lists = rs.get_team(gw)
+    
 
-df_fwd= pd.DataFrame([final_lst,name_list], columns = ['goalkeepers','defenders','midfielders','forwards','gameweek','score'])
-df_fwd.to_csv(str(gw)+'nn_team'+".csv")
+    # print(ranked_players.player_name_gen(team))
+
+    score = evaluate_team_score(team,gw)
+    cost = rs.calculate_cost(team,gw)
+
+
+
+    final_lst = team_to_csv(team, pos_lists)
+    print("Cost: %s" % cost)
+    print("Score: %d" % score)
+    print("Team List: ", team_list)
+    print("Final List: ", final_lst)
+
+    
+    name_list = []
+    i=0
+    while i<4:
+        temp_lst = final_lst[i]
+        temp_lst = ranked_players.player_name_gen(temp_lst)
+        name_list.append(temp_lst)
+        i=i+1
+
+    name_list.append(gw)
+    name_list.append(score)
+
+    df_fwd= pd.DataFrame([final_lst,name_list], columns = ['goalkeepers','defenders','midfielders','forwards','gameweek','score'])
+    df_fwd.to_csv(str(gw)+'nn_team'+".csv")

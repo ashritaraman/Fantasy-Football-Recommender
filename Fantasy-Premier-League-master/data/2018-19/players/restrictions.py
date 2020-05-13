@@ -5,25 +5,9 @@ import csv
 from pandas import DataFrame
 import team_maker as tm 
 
-gw = tm.gw
-ppt = 3 
-g = 2
-d = 5
-m = 5
-f = 3
-
-
-
-gk_lst = tm.gk_lst
-def_lst = tm.def_lst
-mid_lst = tm.mid_lst
-fwd_lst = tm.fwd_lst
-
-
-def form_team_basic(gw):
-    team = [gk_lst[0],gk_lst[1],def_lst[0],def_lst[1],def_lst[2],def_lst[3],def_lst[4],mid_lst[0],mid_lst[1],mid_lst[2],mid_lst[3],mid_lst[4],fwd_lst[0],fwd_lst[1],fwd_lst[2]]
-    return team
-
+def form_team_basic(pos_lists):
+    gk_lst, def_lst, mid_lst, fwd_lst = pos_lists
+    return gk_lst[:2] + def_lst[:5] + mid_lst[:5] + fwd_lst[:3]
 
 def team_id_gen(team):
     team_id_list = []
@@ -35,9 +19,7 @@ def team_id_gen(team):
                 team_id_list.append(elem)
     return team_id_list
 
-
-def team_modif_ppt(team,g,d,m,f):
-    # Initialize team_list with a list with 20 zeroes
+def get_team_list(team):
     team_list = []
     i=1
     while i<21:
@@ -50,6 +32,15 @@ def team_modif_ppt(team,g,d,m,f):
             ind = df_list.index(elem)
             team_id = df_list[ind][0]
             team_list[team_id-1] = team_list[team_id-1]+1 
+    return team_list
+
+def team_modif_ppt(team, pos_idxs, pos_lists):
+    gk_lst, def_lst, mid_lst, fwd_lst = pos_lists
+    df = pd.read_csv("player_bio.csv", usecols = ['team', 'player_id'])
+    df_list = df.values.tolist()
+    g,d,m,f = pos_idxs
+    # Initialize team_list with a list with 20 zeroes
+    team_list = get_team_list(team)
     # print(team_list)
     team_id_list = team_id_gen(team)
 
@@ -110,21 +101,9 @@ def team_modif_ppt(team,g,d,m,f):
     # print(g)       
     # print(team)
     # print(team_list)
-    return ([team,team_list,[g,d,m,f]])
-  
+    return team, team_list, (g,d,m,f)
 
-# def team_modif_ppt_rec(team,team_list,g,d,m,f):
-#     i=0
-#     while(i<len(team_list)):
-#         if (team_list[i]>3):
-#             [team,team_list,[g,d,m,f]] = team_modif_ppt(team,team_list,g,d,m,f)
-#             i=0
-#         else:
-#             i=i+1
-
-#     return team
-
-def calculate_cost(team,gw):
+def calculate_cost(team, gw):
     cost = 0
     csv_name = "gw"+str(gw)+".csv"
     df = pd.read_csv(csv_name, usecols = ['name','value'], encoding = "cp1252")
@@ -135,9 +114,10 @@ def calculate_cost(team,gw):
                 cost = cost+ elem[1]
     return cost
 
+def team_modif_cost(team, pos_idxs, gw, pos_lists):
+    gk_lst, def_lst, mid_lst, fwd_lst = pos_lists
 
-
-def team_modif_cost(team,g,d,m,f):
+    g,d,m,f = pos_idxs
     cost = calculate_cost(team,gw)
     while cost > 1000 :
         team_cost_list = []
@@ -184,7 +164,6 @@ def team_modif_cost(team,g,d,m,f):
 
     return team
 
-
 def ppt_cond_violation(team_list):   #true if condition is violated, false it ppt is fine
     for elem in team_list:
         if elem>3:
@@ -193,22 +172,24 @@ def ppt_cond_violation(team_list):   #true if condition is violated, false it pp
 
 # This funtion combines the two restrictions of ppt and cost
 # and returns a team which satisfies both conditions
-def combined_conditions(team,team_list,cost,g,d,m,f):
-    while (ppt_cond_violation(team_list)):
-        team = team_modif_ppt(team,g,d,m,f)[0]
-        team_list = team_modif_ppt(team,g,d,m,f)[1]
-        [g,d,m,f] = team_modif_ppt(team,g,d,m,f)[2]
-        cost = calculate_cost(team,gw)
-        while cost>1000:
-            team = team_modif_cost(team,g,d,m,f)
-            cost = calculate_cost(team,gw)
-        
-        
-            
-    return team
+def combined_conditions(team, gw, pos_lists, pos_idxs):
+    team_list = get_team_list(team)
+    cost = calculate_cost(team,gw)
 
-cost = 2000
-team = form_team_basic(gw)
-[team, team_list, [g,d,m,f]] = team_modif_ppt(team,g,d,m,f)
-team = combined_conditions(team,team_list,cost,g,d,m,f)
+    if ppt_cond_violation(team_list):
+        team, team_list, pos_idxs = team_modif_ppt(team, pos_idxs, pos_lists)
+        return combined_conditions(team, gw, pos_lists, pos_idxs)
+    
+    if cost>1000:
+        team = team_modif_cost(team, pos_idxs, gw, pos_lists)
+        return combined_conditions(team, gw, pos_lists, pos_idxs)
+    return team, team_list
+
+def get_team(gw):
+    g, d, m, f = 2, 5, 5, 3
+    pos_lists = tm.get_position_lists(gw)
+
+    team = form_team_basic(pos_lists)
+    team, team_list = combined_conditions(team, gw, pos_lists, (g,d,m,f))
+    return team, team_list, pos_lists
 

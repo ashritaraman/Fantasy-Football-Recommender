@@ -43,7 +43,8 @@ gw = rs.gw
 # print(ranked_players.player_name_gen(team))
 
 score = evaluate_team_score(team,gw)
-
+# print(score)
+print(rs.calculate_cost(team,35))
 
 def team_to_csv(team):
     lst1 = [] 

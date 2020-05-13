@@ -1,3 +1,3 @@
 ,goalkeepers,defenders,midfielders,forwards,gameweek,score
-0,"[282, 88]","[116, 221, 484, 526, 138]","[302, 367, 253, 270, 276]","[305, 372, 257]",23,63
-1,"['David de Gea', 'Neil Etheridge']","['David Luiz Moreira Marinho', 'Ricardo Domingos Barbosa Pereira', 'Lucas Digne', 'Kurt Zouma', 'James Tomkins']","['Paul Pogba', 'Heung-Min Son', 'Mohamed Salah', 'Raheem Sterling', 'Bernardo Mota Veiga de Carvalho e Silva']","['Marcus Rashford', 'Harry Kane', 'Roberto Firmino']",23,63
+0,"[88, 191]","[116, 221, 484, 285, 138]","[367, 275, 276, 393, 40]","[305, 257, 234]",23,48
+1,"['Neil Etheridge', 'Jonas Lössl']","['David Luiz Moreira Marinho', 'Ricardo Domingos Barbosa Pereira', 'Lucas Digne', 'Phil Jones', 'James Tomkins']","['Heung-Min Son', 'Leroy Sané', 'Bernardo Mota Veiga de Carvalho e Silva', 'Richarlison de Andrade', 'Ryan Fraser']","['Marcus Rashford', 'Roberto Firmino', 'Jamie Vardy']",23,48

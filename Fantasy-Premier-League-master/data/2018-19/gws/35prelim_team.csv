@@ -1,3 +1,3 @@
 ,goalkeepers,defenders,midfielders,forwards,gameweek,score
-0,"[137, 400]","[245, 221, 331, 142, 193]","[122, 253, 172, 507, 131]","[87, 257, 234]",35,70
-1,"['Vicente Guaita', 'Lukasz Fabianski']","['Trent Alexander-Arnold', 'Ricardo Domingos Barbosa Pereira', 'Maya Yoshida', 'Patrick van Aanholt', 'Chris Löwe']","['Eden Hazard', 'Mohamed Salah', 'Gylfi Sigurdsson', 'Bernard Anício Caldeira Duarte', 'Callum Hudson-Odoi']","['Chris Wood', 'Roberto Firmino', 'Jamie Vardy']",35,70
+0,"[137, 400]","[245, 221, 331, 142, 193]","[122, 172, 507, 131, 40]","[87, 257, 234]",35,66
+1,"['Vicente Guaita', 'Lukasz Fabianski']","['Trent Alexander-Arnold', 'Ricardo Domingos Barbosa Pereira', 'Maya Yoshida', 'Patrick van Aanholt', 'Chris Löwe']","['Eden Hazard', 'Gylfi Sigurdsson', 'Bernard Anício Caldeira Duarte', 'Callum Hudson-Odoi', 'Ryan Fraser']","['Chris Wood', 'Roberto Firmino', 'Jamie Vardy']",35,66

@@ -4,7 +4,7 @@ import numpy as np
 import csv 
 from pandas import DataFrame
 
-gw = 38
+gw = 35
 ppt = 3 
 g = 2
 d = 5
@@ -18,10 +18,10 @@ def_lst = ranked_players.delete_dups(ranked_players.pos_ranked_players(2,gw))
 mid_lst = ranked_players.delete_dups(ranked_players.pos_ranked_players(3,gw))
 fwd_lst = ranked_players.delete_dups(ranked_players.pos_ranked_players(4,gw))
 
-print(gk_lst)
-print(def_lst)
-print(mid_lst)
-print(fwd_lst)
+# print(gk_lst)
+# print(def_lst)
+# print(mid_lst)
+# print(fwd_lst)
 
 
 def form_team_basic(gw):
@@ -195,13 +195,13 @@ def ppt_cond_violation(team_list):   #true if condition is violated, false it pp
 # This funtion combines the two restrictions of ppt and cost
 # and returns a team which satisfies both conditions
 def combined_conditions(team,team_list,cost,g,d,m,f):
-    while (ppt_cond_violation(team_list)):
-        team = team_modif_ppt(team,g,d,m,f)[0]
-        team_list = team_modif_ppt(team,g,d,m,f)[1]
-        [g,d,m,f] = team_modif_ppt(team,g,d,m,f)[2]
+    while cost>1000:
+        team = team_modif_cost(team,g,d,m,f)
         cost = calculate_cost(team,gw)
-        while cost>1000:
-            team = team_modif_cost(team,g,d,m,f)
+        while (ppt_cond_violation(team_list)):
+            team = team_modif_ppt(team,g,d,m,f)[0]
+            team_list = team_modif_ppt(team,g,d,m,f)[1]
+            [g,d,m,f] = team_modif_ppt(team,g,d,m,f)[2]
             cost = calculate_cost(team,gw)
         
         

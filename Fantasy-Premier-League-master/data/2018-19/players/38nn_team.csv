@@ -1,3 +1,3 @@
 ,goalkeepers,defenders,midfielders,forwards,gameweek,score
-0,"[509, 154]","[245, 263, 157, 31, 484]","[122, 253, 40, 432, 276]","[43, 493, 417]",38,41
-1,"['Sergio Rico', 'Jordan Pickford']","['Trent Alexander-Arnold', 'Vincent Kompany', 'Seamus Coleman', 'Nathan Aké', 'Lucas Digne']","['Eden Hazard', 'Mohamed Salah', 'Ryan Fraser', 'Diogo Jota', 'Bernardo Mota Veiga de Carvalho e Silva']","['Callum Wilson', 'Salomón Rondón', 'Marko Arnautovic']",38,41
+0,"[509, 260]","[245, 263, 157, 484, 246]","[122, 40, 432, 276, 343]","[43, 493, 417]",38,55
+1,"['Sergio Rico', 'Ederson Santana de Moraes']","['Trent Alexander-Arnold', 'Vincent Kompany', 'Seamus Coleman', 'Lucas Digne', 'Virgil van Dijk']","['Eden Hazard', 'Ryan Fraser', 'Diogo Jota', 'Bernardo Mota Veiga de Carvalho e Silva', 'Nathan Redmond']","['Callum Wilson', 'Salomón Rondón', 'Marko Arnautovic']",38,55

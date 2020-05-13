@@ -1,3 +1,3 @@
 ,goalkeepers,defenders,midfielders,forwards,gameweek,score
-0,"[400, 351]","[353, 72, 484, 246, 315]","[122, 275, 465, 253, 390]","[257, 419, 305]",18,56
-1,"['Lukasz Fabianski', 'Hugo Lloris']","['Toby Alderweireld', 'James Tarkowski', 'Lucas Digne', 'Virgil van Dijk', 'Javier Manquillo']","['Eden Hazard', 'Leroy Sané', 'Felipe Anderson Pereira Gomes', 'Mohamed Salah', 'Abdoulaye Doucouré']","['Roberto Firmino', 'Javier Hernández Balcázar', 'Marcus Rashford']",18,56
+0,"[351, 445]","[353, 72, 425, 484, 246]","[122, 275, 390, 489, 370]","[257, 493, 419]",18,45
+1,"['Hugo Lloris', 'Ben Foster']","['Toby Alderweireld', 'James Tarkowski', 'Matt Doherty', 'Lucas Digne', 'Virgil van Dijk']","['Eden Hazard', 'Leroy Sané', 'Abdoulaye Doucouré', 'Robert Snodgrass', 'Lucas Rodrigues Moura da Silva']","['Roberto Firmino', 'Salomón Rondón', 'Javier Hernández Balcázar']",18,45
