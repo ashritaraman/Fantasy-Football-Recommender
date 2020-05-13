@@ -81,10 +81,12 @@ export default class PlayerTable extends Component {
             <Header as="h2" textAlign="center">
               Player Information Table
             </Header>
-            <p>
-              This table shows player information. You can select a game week to
-              see the previous week's scores.
+            <div class="ui basic center aligned segment">
+              <p class="biggerbodyfont">
+                Select a game week to
+                see the previous week's scores
             </p>
+            </div>
           </Container>
         </Segment>
         <Form>
@@ -92,7 +94,7 @@ export default class PlayerTable extends Component {
             <Grid.Column></Grid.Column>
             <Grid.Column>
               <Form.Field>
-                <label>Choose a Game Week Between 2-38</label>
+                <label>Choose a game week between 2-38</label>
                 <input
                   type="number"
                   placeholder="2"
@@ -489,7 +491,7 @@ export default class PlayerTable extends Component {
             />
           </Table.Footer>
         </Table>
-      </Segment>
+      </Segment >
     );
   }
 }
