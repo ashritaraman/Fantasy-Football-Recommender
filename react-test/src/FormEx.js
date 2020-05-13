@@ -63,6 +63,7 @@ class FormExampleSubcomponentControl extends Component {
       noneError: true,
       valueError: true,
       formError: true,
+      sameTeamError: true,
       samePlayerError: true,
       errorMessage: "hi",
       styles: {
@@ -132,6 +133,7 @@ class FormExampleSubcomponentControl extends Component {
     this.setState({ gameWeek: event.target.value });
   };
 
+
   onSubmit = (event) => {
     let error = false;
     var results = 0;
@@ -178,10 +180,13 @@ class FormExampleSubcomponentControl extends Component {
         this.setState({ midfielder5nn: team.midfielder5 });
       }
     }
+    var player_teams = [];
     for (var i = 0; i < player_points.length; i++) {
       var player = player_points[i];
       var player1 = player_values[i];
+
       if (team_list.includes(player.name)) {
+        player_teams.push(player.team);
         if (Number(this.state.gameWeek) == 1) {
           results +=
             Number(player.total_points_1);
@@ -382,6 +387,19 @@ class FormExampleSubcomponentControl extends Component {
     }
     this.setState({ score: results });
     this.setState({ value: vals });
+    var hasTeamErr = false;
+    for (var i = 0; i < player_teams.length - 1; i++) {
+      var counti = 0;
+      for (var j = i + 1; j < player_teams.length; j++) {
+        if (player_teams[i] === player_teams[j]) {
+          counti += 1;
+        }
+      }
+      if (counti > 3) {
+        hasTeamErr = true;
+        break;
+      }
+    }
 
     if (
       this.state.gameWeek === 1 ||
@@ -442,6 +460,11 @@ class FormExampleSubcomponentControl extends Component {
     } else {
       this.setState({ samePlayerError: false });
     }
+    if (hasTeamErr) {
+      this.setState({ sameTeamError: true });
+    } else {
+      this.setState({ sameTeamError: false });
+    }
     if (error) {
       this.setState({ formError: true });
       return;
@@ -460,7 +483,7 @@ class FormExampleSubcomponentControl extends Component {
           </Header>
           <Form warning>
             <Message warning>
-              Please only choose a player once and make sure your team's total
+              Rules to remember: Only choose a player once, at least 3 players can be from the same team, and your team's total
               value doesn't exceed 1000!
             </Message>
             <Grid columns={4} padded>
@@ -677,12 +700,40 @@ class FormExampleSubcomponentControl extends Component {
                       <Header color="white">Form Error </Header>
                       <p>Looks like you didn't finish the form!</p>
                     </Segment>
-                  ) : this.state.valueError && this.state.samePlayerError ? (
+                  ) : this.state.valueError && this.state.samePlayerError && this.state.sameTeamError ? (
+                    <Segment color="red" inverted tertiary>
+                      <Header color="white">Form Error </Header>
+                      <p>
+                        It looks like you chose the same player for multiple
+                        positions, chose at least 3 players on the same team,
+                        and the total value of team exceeds 1000,
+                        please choose again
+                      </p>
+                    </Segment>
+                  ) : this.state.samePlayerError && this.state.sameTeamError ? (
+                    <Segment color="red" inverted tertiary>
+                      <Header color="white">Form Error </Header>
+                      <p>
+                        It looks like you chose the same player for multiple
+                        positions and at least 3 players on the same team,
+                        please choose again
+                      </p>
+                    </Segment>
+                  ) : this.state.samePlayerError && this.state.valueError ? (
                     <Segment color="red" inverted tertiary>
                       <Header color="white">Form Error </Header>
                       <p>
                         It looks like you chose the same player for multiple
                         positions and the total value of team exceeds 1000,
+                        please choose again
+                      </p>
+                    </Segment>
+                  ) : this.state.sameTeamError && this.state.valueError ? (
+                    <Segment color="red" inverted tertiary>
+                      <Header color="white">Form Error </Header>
+                      <p>
+                        It looks like you chose at least 3 players on the same team
+                        and the total value of team exceeds 1000,
                         please choose again
                       </p>
                     </Segment>
@@ -701,76 +752,82 @@ class FormExampleSubcomponentControl extends Component {
                         Total value of team exceeds 1000, please choose again
                       </p>
                     </Segment>
-                  ) : (
-                            <Segment>
-                              <Image size="medium" src={ModalPic} rounded centered />
-                              <Grid columns={2} padded>
-                                <Grid.Column>
-                                  <Header>Your Team </Header>
-                                  <p><b>Score:</b> {this.state.score}{" "} </p>
-                                  <p><b>Goal Keepers:</b></p>
-                                  <ul>
-                                    <li>{this.state.goalkeeper1}</li>
-                                    <li>{this.state.goalkeeper2}</li>
-                                  </ul>
-                                  <p><b>Defenders:</b></p>
-                                  <ul>
-                                    <li>{this.state.defender1}</li>
-                                    <li>{this.state.defender2}</li>
-                                    <li>{this.state.defender3}</li>
-                                    <li>{this.state.defender4}</li>
-                                    <li>{this.state.defender5}</li>
-                                  </ul>
-                                  <p><b>Midfielders:</b></p>
-                                  <ul>
-                                    <li>{this.state.midfielder1}</li>
-                                    <li>{this.state.midfielder2}</li>
-                                    <li>{this.state.midfielder3}</li>
-                                    <li>{this.state.midfielder4}</li>
-                                    <li>{this.state.midfielder5}</li>
-                                  </ul>
-                                  <p><b>Forwards:</b></p>
-                                  <ul>
-                                    <li>{this.state.forward1}</li>
-                                    <li>{this.state.forward2}</li>
-                                    <li>{this.state.forward3}</li>
-                                  </ul>
-                                </Grid.Column>
-                                <Grid.Column>
-                                  <Header>AI Team</Header>
-                                  <p><b>Score:</b> {this.state.scorenn}{" "} </p>
-                                  <p><b>Goal Keepers:</b></p>
-                                  <ul>
-                                    <li>{this.state.goalkeeper1nn}</li>
-                                    <li>{this.state.goalkeeper2nn}</li>
-                                  </ul>
-                                  <p><b>Defenders:</b></p>
-                                  <ul>
-                                    <li>{this.state.defender1nn}</li>
-                                    <li>{this.state.defender2nn}</li>
-                                    <li>{this.state.defender3nn}</li>
-                                    <li>{this.state.defender4nn}</li>
-                                    <li>{this.state.defender5nn}</li>
-                                  </ul>
-                                  <p><b>Midfielders:</b></p>
-                                  <ul>
-                                    <li>{this.state.midfielder1nn}</li>
-                                    <li>{this.state.midfielder2nn}</li>
-                                    <li>{this.state.midfielder3nn}</li>
-                                    <li>{this.state.midfielder4nn}</li>
-                                    <li>{this.state.midfielder5nn}</li>
-                                  </ul>
-                                  <p><b>Forwards:</b></p>
-                                  <ul>
-                                    <li>{this.state.forward1nn}</li>
-                                    <li>{this.state.forward2nn}</li>
-                                    <li>{this.state.forward3nn}</li>
-                                  </ul>
-                                </Grid.Column>
+                  ) : this.state.sameTeamError ? (
+                    <Segment color="red" inverted tertiary>
+                      <Header color="white">Form Error </Header>
+                      <p>
+                        It looks like you chose at least 3 players on the same team
+                      </p>
+                    </Segment>
+                  ) : (<Segment>
+                    <Image size="medium" src={ModalPic} rounded centered />
+                    <Grid columns={2} padded>
+                      <Grid.Column>
+                        <Header>Your Team </Header>
+                        <p><b>Score:</b> {this.state.score}{" "} </p>
+                        <p><b>Goal Keepers:</b></p>
+                        <ul>
+                          <li>{this.state.goalkeeper1}</li>
+                          <li>{this.state.goalkeeper2}</li>
+                        </ul>
+                        <p><b>Defenders:</b></p>
+                        <ul>
+                          <li>{this.state.defender1}</li>
+                          <li>{this.state.defender2}</li>
+                          <li>{this.state.defender3}</li>
+                          <li>{this.state.defender4}</li>
+                          <li>{this.state.defender5}</li>
+                        </ul>
+                        <p><b>Midfielders:</b></p>
+                        <ul>
+                          <li>{this.state.midfielder1}</li>
+                          <li>{this.state.midfielder2}</li>
+                          <li>{this.state.midfielder3}</li>
+                          <li>{this.state.midfielder4}</li>
+                          <li>{this.state.midfielder5}</li>
+                        </ul>
+                        <p><b>Forwards:</b></p>
+                        <ul>
+                          <li>{this.state.forward1}</li>
+                          <li>{this.state.forward2}</li>
+                          <li>{this.state.forward3}</li>
+                        </ul>
+                      </Grid.Column>
+                      <Grid.Column>
+                        <Header>AI Team</Header>
+                        <p><b>Score:</b> {this.state.scorenn}{" "} </p>
+                        <p><b>Goal Keepers:</b></p>
+                        <ul>
+                          <li>{this.state.goalkeeper1nn}</li>
+                          <li>{this.state.goalkeeper2nn}</li>
+                        </ul>
+                        <p><b>Defenders:</b></p>
+                        <ul>
+                          <li>{this.state.defender1nn}</li>
+                          <li>{this.state.defender2nn}</li>
+                          <li>{this.state.defender3nn}</li>
+                          <li>{this.state.defender4nn}</li>
+                          <li>{this.state.defender5nn}</li>
+                        </ul>
+                        <p><b>Midfielders:</b></p>
+                        <ul>
+                          <li>{this.state.midfielder1nn}</li>
+                          <li>{this.state.midfielder2nn}</li>
+                          <li>{this.state.midfielder3nn}</li>
+                          <li>{this.state.midfielder4nn}</li>
+                          <li>{this.state.midfielder5nn}</li>
+                        </ul>
+                        <p><b>Forwards:</b></p>
+                        <ul>
+                          <li>{this.state.forward1nn}</li>
+                          <li>{this.state.forward2nn}</li>
+                          <li>{this.state.forward3nn}</li>
+                        </ul>
+                      </Grid.Column>
 
-                              </Grid>
-                            </Segment>
-                          )}
+                    </Grid>
+                  </Segment>
+                                  )}
                 </Message>
               </Modal.Description>
             </Modal.Content>
