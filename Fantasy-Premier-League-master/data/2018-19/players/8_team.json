@@ -1,1 +1,21 @@
-[{"goalkeeper1": "Rui Pedro dos Santos Patr\u00c3\u00adcio", "goalkeeper2": "Joe Hart", "defender1": "Harry Maguire", "defender2": "Nicol\u00c3\u00a1s Otamendi", "defender3": "Shkodran Mustafi", "defender4": "H\u00c3\u00a9ctor Beller\u00c3\u00adn", "defender5": "Willy Boly", "midfielder1": "Raheem Sterling", "midfielder2": "Johann Berg Gudmundsson", "midfielder3": "James Maddison", "midfielder4": "Mateo Kovacic", "midfielder5": "Ashley Westwood", "forward1": "Alexandre Lacazette", "forward2": "Jamie Vardy", "forward3": "Andre Gray", "gameweek": "8", "score": "55"}]
+[
+  {
+    "goalkeeper1": "Rui Pedro dos Santos Patr\u00edcio",
+    "goalkeeper2": "Joe Hart",
+    "defender1": "Harry Maguire",
+    "defender2": "Nicol\u00e1s Otamendi",
+    "defender3": "Shkodran Mustafi",
+    "defender4": "H\u00e9ctor Beller\u00edn",
+    "defender5": "Willy Boly",
+    "midfielder1": "Raheem Sterling",
+    "midfielder2": "Johann Berg Gudmundsson",
+    "midfielder3": "James Maddison",
+    "midfielder4": "Mateo Kovacic",
+    "midfielder5": "Ashley Westwood",
+    "forward1": "Alexandre Lacazette",
+    "forward2": "Jamie Vardy",
+    "forward3": "Andre Gray",
+    "gameweek": "8",
+    "score": "55"
+  }
+]

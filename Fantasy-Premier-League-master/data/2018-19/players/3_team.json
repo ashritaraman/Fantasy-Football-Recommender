@@ -1,1 +1,21 @@
-[{"goalkeeper1": "Jonas L\u00c3\u00b6ssl", "goalkeeper2": "Neil Etheridge", "defender1": "Marcos Alonso", "defender2": "Sol Bamba", "defender3": "Nacho Monreal", "defender4": "Christopher Schindler", "defender5": "Toby Alderweireld", "midfielder1": "Georginio Wijnaldum", "midfielder2": "Lucas Rodrigues Moura da Silva", "midfielder3": "Mohamed Salah", "midfielder4": "Andr\u00c3\u00a9 Sch\u00c3\u00bcrrle", "midfielder5": "Ilkay G\u00c3\u00bcndogan", "forward1": "Aleksandar Mitrovic", "forward2": "Roberto Firmino", "forward3": "Luciano Vietto", "gameweek": "3", "score": "129"}]
+[
+  {
+    "goalkeeper1": "Jonas L\u00f6ssl",
+    "goalkeeper2": "Neil Etheridge",
+    "defender1": "Marcos Alonso",
+    "defender2": "Sol Bamba",
+    "defender3": "Nacho Monreal",
+    "defender4": "Christopher Schindler",
+    "defender5": "Toby Alderweireld",
+    "midfielder1": "Georginio Wijnaldum",
+    "midfielder2": "Lucas Rodrigues Moura da Silva",
+    "midfielder3": "Mohamed Salah",
+    "midfielder4": "Andr\u00e9 Sch\u00fcrrle",
+    "midfielder5": "Ilkay G\u00fcndogan",
+    "forward1": "Aleksandar Mitrovic",
+    "forward2": "Roberto Firmino",
+    "forward3": "Luciano Vietto",
+    "gameweek": "3",
+    "score": "129"
+  }
+]

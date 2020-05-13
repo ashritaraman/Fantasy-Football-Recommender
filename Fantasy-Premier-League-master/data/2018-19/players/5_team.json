@@ -1,1 +1,21 @@
-[{"goalkeeper1": "Wayne Hennessey", "goalkeeper2": "Rui Pedro dos Santos Patr\u00c3\u00adcio", "defender1": "Matt Doherty", "defender2": "Shane Duffy", "defender3": "Kyle Walker", "defender4": "Mamadou Sakho", "defender5": "Federico Fern\u00c3\u00a1ndez", "midfielder1": "Eden Hazard", "midfielder2": "Ryan Fraser", "midfielder3": "David Silva", "midfielder4": "Andriy Yarmolenko", "midfielder5": "Andros Townsend", "forward1": "Olivier Giroud", "forward2": "Joshua King", "forward3": "Sergio Ag\u00c3\u00bcero", "gameweek": "5", "score": "148"}]
+[
+  {
+    "goalkeeper1": "Wayne Hennessey",
+    "goalkeeper2": "Rui Pedro dos Santos Patr\u00edcio",
+    "defender1": "Matt Doherty",
+    "defender2": "Shane Duffy",
+    "defender3": "Kyle Walker",
+    "defender4": "Mamadou Sakho",
+    "defender5": "Federico Fern\u00e1ndez",
+    "midfielder1": "Eden Hazard",
+    "midfielder2": "Ryan Fraser",
+    "midfielder3": "David Silva",
+    "midfielder4": "Andriy Yarmolenko",
+    "midfielder5": "Andros Townsend",
+    "forward1": "Olivier Giroud",
+    "forward2": "Joshua King",
+    "forward3": "Sergio Ag\u00fcero",
+    "gameweek": "5",
+    "score": "148"
+  }
+]

@@ -19,7 +19,7 @@ import PlayerScores from "./combined_gw_2.json";
 import PlayerValues from "./combined_gw_3.json";
 import PlayerPoints from "./combined_gw_4.json";
 import ModalPic from "./modal_pic.png";
-import NNTeams from "./nn_teams_by_gw.json";
+import NNTeams from "./nn_teams_by_gw_2.json";
 
 class FormExampleSubcomponentControl extends Component {
   constructor(props) {
@@ -133,7 +133,6 @@ class FormExampleSubcomponentControl extends Component {
     this.setState({ gameWeek: event.target.value });
   };
 
-
   onSubmit = (event) => {
     let error = false;
     var results = 0;
@@ -188,199 +187,161 @@ class FormExampleSubcomponentControl extends Component {
       if (team_list.includes(player.name)) {
         player_teams.push(player.team);
         if (Number(this.state.gameWeek) == 1) {
-          results +=
-            Number(player.total_points_1);
+          results += Number(player.total_points_1);
           vals += Number(player1.value_1);
         }
         if (Number(this.state.gameWeek) == 2) {
-          results +=
-            Number(player.total_points_2);
+          results += Number(player.total_points_2);
           vals += Number(player1.value_2);
         }
         if (Number(this.state.gameWeek) == 3) {
-          results +=
-            Number(player.total_points_3);
+          results += Number(player.total_points_3);
           vals += Number(player1.value_3);
         }
         if (Number(this.state.gameWeek) == 4) {
-          results +=
-            Number(player.total_points_4);
+          results += Number(player.total_points_4);
           vals += Number(player1.value_4);
         }
         if (Number(this.state.gameWeek) == 5) {
-          results +=
-            Number(player.total_points_5);
+          results += Number(player.total_points_5);
           vals += Number(player1.value_5);
         }
         if (Number(this.state.gameWeek) == 6) {
-          results +=
-            Number(player.total_points_6);
+          results += Number(player.total_points_6);
           vals += Number(player1.value_6);
         }
         if (Number(this.state.gameWeek) == 7) {
-          results +=
-            Number(player.total_points_7);
+          results += Number(player.total_points_7);
           vals += Number(player1.value_7);
         }
         if (Number(this.state.gameWeek) == 8) {
-          results +=
-            Number(player.total_points_8);
+          results += Number(player.total_points_8);
           vals += Number(player1.value_8);
         }
         if (Number(this.state.gameWeek) == 9) {
-          results +=
-            Number(player.total_points_9);
+          results += Number(player.total_points_9);
           vals += Number(player1.value_9);
         }
         if (Number(this.state.gameWeek) == 10) {
-          results +=
-            Number(player.total_points_10);
+          results += Number(player.total_points_10);
           vals += Number(player1.value_10);
         }
         if (Number(this.state.gameWeek) == 11) {
-          results +=
-            Number(player.total_points_11);
+          results += Number(player.total_points_11);
           vals += Number(player1.value_11);
         }
         if (Number(this.state.gameWeek) == 12) {
-          results +=
-            Number(player.total_points_12);
+          results += Number(player.total_points_12);
           vals += Number(player1.value_12);
         }
         if (Number(this.state.gameWeek) == 13) {
-          results +=
-            Number(player.total_points_13);
+          results += Number(player.total_points_13);
           vals += Number(player1.value_13);
         }
         if (Number(this.state.gameWeek) == 14) {
-          results +=
-            Number(player.total_points_14);
+          results += Number(player.total_points_14);
           vals += Number(player1.value_14);
         }
         if (Number(this.state.gameWeek) == 15) {
-          results +=
-            Number(player.total_points_15);
+          results += Number(player.total_points_15);
           vals += Number(player1.value_15);
         }
         if (Number(this.state.gameWeek) == 16) {
-          results +=
-            Number(player.total_points_16);
+          results += Number(player.total_points_16);
           vals += Number(player1.value_16);
         }
         if (Number(this.state.gameWeek) == 17) {
-          results +=
-            Number(player.total_points_17);
+          results += Number(player.total_points_17);
           vals += Number(player1.value_17);
         }
         if (Number(this.state.gameWeek) == 18) {
-          results +=
-            Number(player.total_points_18);
+          results += Number(player.total_points_18);
           vals += Number(player1.value_18);
         }
         if (Number(this.state.gameWeek) == 19) {
-          results +=
-            Number(player.total_points_19);
+          results += Number(player.total_points_19);
           vals += Number(player1.value_19);
         }
         if (Number(this.state.gameWeek) == 20) {
-          results +=
-            Number(player.total_points_20);
+          results += Number(player.total_points_20);
           vals += Number(player1.value_20);
         }
 
         if (Number(this.state.gameWeek) == 21) {
-          results +=
-            Number(player.total_points_21);
+          results += Number(player.total_points_21);
           vals += Number(player1.value_21);
         }
 
         if (Number(this.state.gameWeek) == 22) {
-          results +=
-            Number(player.total_points_22);
+          results += Number(player.total_points_22);
           vals += Number(player1.value_22);
         }
 
         if (Number(this.state.gameWeek) == 23) {
-          results +=
-            Number(player.total_points_23);
+          results += Number(player.total_points_23);
           vals += Number(player1.value_23);
         }
 
         if (Number(this.state.gameWeek) == 24) {
-          results +=
-            Number(player.total_points_24);
+          results += Number(player.total_points_24);
           vals += Number(player1.value_24);
         }
 
         if (Number(this.state.gameWeek) == 25) {
-          results +=
-            Number(player.total_points_25);
+          results += Number(player.total_points_25);
           vals += Number(player1.value_25);
         }
         if (Number(this.state.gameWeek) == 26) {
-          results +=
-            Number(player.total_points_26)
+          results += Number(player.total_points_26);
           vals += Number(player1.value_26);
         }
         if (Number(this.state.gameWeek) == 27) {
-          results +=
-            Number(player.total_points_27);
+          results += Number(player.total_points_27);
           vals += Number(player1.value_27);
         }
         if (Number(this.state.gameWeek) == 28) {
-          results +=
-            Number(player.total_points_28);
+          results += Number(player.total_points_28);
           vals += Number(player1.value_28);
         }
         if (Number(this.state.gameWeek) == 29) {
-          results +=
-            Number(player.total_points_29);
+          results += Number(player.total_points_29);
           vals += Number(player1.value_29);
         }
         if (Number(this.state.gameWeek) == 30) {
-          results +=
-            Number(player.total_points_30);
+          results += Number(player.total_points_30);
           vals += Number(player1.value_30);
         }
         if (Number(this.state.gameWeek) == 31) {
-          results +=
-            Number(player.total_points_31);
+          results += Number(player.total_points_31);
           vals += Number(player1.value_31);
         }
         if (Number(this.state.gameWeek) == 32) {
-          results +=
-            Number(player.total_points_32);
+          results += Number(player.total_points_32);
           vals += Number(player1.value_32);
         }
         if (Number(this.state.gameWeek) == 33) {
-          results +=
-            Number(player.total_points_33);
+          results += Number(player.total_points_33);
           vals += Number(player1.value_33);
         }
 
         if (Number(this.state.gameWeek) == 34) {
-          results +=
-            Number(player.total_points_34);
+          results += Number(player.total_points_34);
           vals += Number(player1.value_34);
         }
         if (Number(this.state.gameWeek) == 35) {
-          results +=
-            Number(player.total_points_35);
+          results += Number(player.total_points_35);
           vals += Number(player1.value_35);
         }
         if (Number(this.state.gameWeek) == 36) {
-          results +=
-            Number(player.total_points_36);
+          results += Number(player.total_points_36);
           vals += Number(player1.value_36);
         }
         if (Number(this.state.gameWeek) == 37) {
-          results +=
-            Number(player.total_points_37);
+          results += Number(player.total_points_37);
           vals += Number(player1.value_37);
         }
         if (Number(this.state.gameWeek) == 38) {
-          results +=
-            Number(player.total_points_38);
+          results += Number(player.total_points_38);
           vals += Number(player1.value_38);
         }
       }
@@ -483,8 +444,9 @@ class FormExampleSubcomponentControl extends Component {
           </Header>
           <Form warning>
             <Message warning>
-              Rules to remember: Only choose a player once, at least 3 players can be from the same team, and your team's total
-              value doesn't exceed 1000!
+              Rules to remember: Only choose a player once, at least 3 players
+              can be from the same team, and your team's total value doesn't
+              exceed 1000!
             </Message>
             <Grid columns={4} padded>
               <Grid.Column>
@@ -700,14 +662,16 @@ class FormExampleSubcomponentControl extends Component {
                       <Header color="white">Form Error </Header>
                       <p>Looks like you didn't finish the form!</p>
                     </Segment>
-                  ) : this.state.valueError && this.state.samePlayerError && this.state.sameTeamError ? (
+                  ) : this.state.valueError &&
+                    this.state.samePlayerError &&
+                    this.state.sameTeamError ? (
                     <Segment color="red" inverted tertiary>
                       <Header color="white">Form Error </Header>
                       <p>
                         It looks like you chose the same player for multiple
                         positions, chose at least 3 players on the same team,
-                        and the total value of team exceeds 1000,
-                        please choose again
+                        and the total value of team exceeds 1000, please choose
+                        again
                       </p>
                     </Segment>
                   ) : this.state.samePlayerError && this.state.sameTeamError ? (
@@ -732,9 +696,9 @@ class FormExampleSubcomponentControl extends Component {
                     <Segment color="red" inverted tertiary>
                       <Header color="white">Form Error </Header>
                       <p>
-                        It looks like you chose at least 3 players on the same team
-                        and the total value of team exceeds 1000,
-                        please choose again
+                        It looks like you chose at least 3 players on the same
+                        team and the total value of team exceeds 1000, please
+                        choose again
                       </p>
                     </Segment>
                   ) : this.state.samePlayerError ? (
@@ -756,78 +720,99 @@ class FormExampleSubcomponentControl extends Component {
                     <Segment color="red" inverted tertiary>
                       <Header color="white">Form Error </Header>
                       <p>
-                        It looks like you chose at least 3 players on the same team
+                        It looks like you chose at least 3 players on the same
+                        team
                       </p>
                     </Segment>
-                  ) : (<Segment>
-                    <Image size="medium" src={ModalPic} rounded centered />
-                    <Grid columns={2} padded>
-                      <Grid.Column>
-                        <Header>Your Team </Header>
-                        <p><b>Score:</b> {this.state.score}{" "} </p>
-                        <p><b>Goal Keepers:</b></p>
-                        <ul>
-                          <li>{this.state.goalkeeper1}</li>
-                          <li>{this.state.goalkeeper2}</li>
-                        </ul>
-                        <p><b>Defenders:</b></p>
-                        <ul>
-                          <li>{this.state.defender1}</li>
-                          <li>{this.state.defender2}</li>
-                          <li>{this.state.defender3}</li>
-                          <li>{this.state.defender4}</li>
-                          <li>{this.state.defender5}</li>
-                        </ul>
-                        <p><b>Midfielders:</b></p>
-                        <ul>
-                          <li>{this.state.midfielder1}</li>
-                          <li>{this.state.midfielder2}</li>
-                          <li>{this.state.midfielder3}</li>
-                          <li>{this.state.midfielder4}</li>
-                          <li>{this.state.midfielder5}</li>
-                        </ul>
-                        <p><b>Forwards:</b></p>
-                        <ul>
-                          <li>{this.state.forward1}</li>
-                          <li>{this.state.forward2}</li>
-                          <li>{this.state.forward3}</li>
-                        </ul>
-                      </Grid.Column>
-                      <Grid.Column>
-                        <Header>AI Team</Header>
-                        <p><b>Score:</b> {this.state.scorenn}{" "} </p>
-                        <p><b>Goal Keepers:</b></p>
-                        <ul>
-                          <li>{this.state.goalkeeper1nn}</li>
-                          <li>{this.state.goalkeeper2nn}</li>
-                        </ul>
-                        <p><b>Defenders:</b></p>
-                        <ul>
-                          <li>{this.state.defender1nn}</li>
-                          <li>{this.state.defender2nn}</li>
-                          <li>{this.state.defender3nn}</li>
-                          <li>{this.state.defender4nn}</li>
-                          <li>{this.state.defender5nn}</li>
-                        </ul>
-                        <p><b>Midfielders:</b></p>
-                        <ul>
-                          <li>{this.state.midfielder1nn}</li>
-                          <li>{this.state.midfielder2nn}</li>
-                          <li>{this.state.midfielder3nn}</li>
-                          <li>{this.state.midfielder4nn}</li>
-                          <li>{this.state.midfielder5nn}</li>
-                        </ul>
-                        <p><b>Forwards:</b></p>
-                        <ul>
-                          <li>{this.state.forward1nn}</li>
-                          <li>{this.state.forward2nn}</li>
-                          <li>{this.state.forward3nn}</li>
-                        </ul>
-                      </Grid.Column>
-
-                    </Grid>
-                  </Segment>
-                                  )}
+                  ) : (
+                    <Segment>
+                      <Image size="medium" src={ModalPic} rounded centered />
+                      <Grid columns={2} padded>
+                        <Grid.Column>
+                          <Header>Your Team </Header>
+                          <p>
+                            <b>Score:</b> {this.state.score}{" "}
+                          </p>
+                          <p>
+                            <b>Goal Keepers:</b>
+                          </p>
+                          <ul>
+                            <li>{this.state.goalkeeper1}</li>
+                            <li>{this.state.goalkeeper2}</li>
+                          </ul>
+                          <p>
+                            <b>Defenders:</b>
+                          </p>
+                          <ul>
+                            <li>{this.state.defender1}</li>
+                            <li>{this.state.defender2}</li>
+                            <li>{this.state.defender3}</li>
+                            <li>{this.state.defender4}</li>
+                            <li>{this.state.defender5}</li>
+                          </ul>
+                          <p>
+                            <b>Midfielders:</b>
+                          </p>
+                          <ul>
+                            <li>{this.state.midfielder1}</li>
+                            <li>{this.state.midfielder2}</li>
+                            <li>{this.state.midfielder3}</li>
+                            <li>{this.state.midfielder4}</li>
+                            <li>{this.state.midfielder5}</li>
+                          </ul>
+                          <p>
+                            <b>Forwards:</b>
+                          </p>
+                          <ul>
+                            <li>{this.state.forward1}</li>
+                            <li>{this.state.forward2}</li>
+                            <li>{this.state.forward3}</li>
+                          </ul>
+                        </Grid.Column>
+                        <Grid.Column>
+                          <Header>AI Team</Header>
+                          <p>
+                            <b>Score:</b> {this.state.scorenn}{" "}
+                          </p>
+                          <p>
+                            <b>Goal Keepers:</b>
+                          </p>
+                          <ul>
+                            <li>{this.state.goalkeeper1nn}</li>
+                            <li>{this.state.goalkeeper2nn}</li>
+                          </ul>
+                          <p>
+                            <b>Defenders:</b>
+                          </p>
+                          <ul>
+                            <li>{this.state.defender1nn}</li>
+                            <li>{this.state.defender2nn}</li>
+                            <li>{this.state.defender3nn}</li>
+                            <li>{this.state.defender4nn}</li>
+                            <li>{this.state.defender5nn}</li>
+                          </ul>
+                          <p>
+                            <b>Midfielders:</b>
+                          </p>
+                          <ul>
+                            <li>{this.state.midfielder1nn}</li>
+                            <li>{this.state.midfielder2nn}</li>
+                            <li>{this.state.midfielder3nn}</li>
+                            <li>{this.state.midfielder4nn}</li>
+                            <li>{this.state.midfielder5nn}</li>
+                          </ul>
+                          <p>
+                            <b>Forwards:</b>
+                          </p>
+                          <ul>
+                            <li>{this.state.forward1nn}</li>
+                            <li>{this.state.forward2nn}</li>
+                            <li>{this.state.forward3nn}</li>
+                          </ul>
+                        </Grid.Column>
+                      </Grid>
+                    </Segment>
+                  )}
                 </Message>
               </Modal.Description>
             </Modal.Content>

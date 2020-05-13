@@ -3,10 +3,10 @@
     "goalkeeper1": "David de Gea",
     "goalkeeper2": "Hugo Lloris",
     "defender1": "Aymeric Laporte",
-    "defender2": "Sead Kolasinac",
-    "defender3": "Fabian Sch\u00e4r",
-    "defender4": "C\u00e9sar Azpilicueta",
-    "defender5": "Virgil van Dijk",
+    "defender2": "Virgil van Dijk",
+    "defender3": "Chris Smalling",
+    "defender4": "Sead Kolasinac",
+    "defender5": "Fabian Sch\u00e4r",
     "midfielder1": "Gerard Deulofeu",
     "midfielder2": "Paul Pogba",
     "midfielder3": "Isaac Hayden",
@@ -16,6 +16,6 @@
     "forward2": "Salom\u00f3n Rond\u00f3n",
     "forward3": "Alexandre Lacazette",
     "gameweek": "28",
-    "score": "84"
+    "score": "74"
   }
 ]

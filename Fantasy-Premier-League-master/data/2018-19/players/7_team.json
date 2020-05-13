@@ -1,1 +1,21 @@
-[{"goalkeeper1": "Wayne Hennessey", "goalkeeper2": "Joe Hart", "defender1": "Trent Alexander-Arnold", "defender2": "Matt Doherty", "defender3": "Shane Duffy", "defender4": "James Tomkins", "defender5": "James Tarkowski", "midfielder1": "Raheem Sterling", "midfielder2": "Eden Hazard", "midfielder3": "Bernardo Mota Veiga de Carvalho e Silva", "midfielder4": "Aaron Ramsey", "midfielder5": "Johann Berg Gudmundsson", "forward1": "Aleksandar Mitrovic", "forward2": "Alexandre Lacazette", "forward3": "Ra\u00c3\u00bal Jim\u00c3\u00a9nez", "gameweek": "7", "score": "74"}]
+[
+  {
+    "goalkeeper1": "Wayne Hennessey",
+    "goalkeeper2": "Joe Hart",
+    "defender1": "Trent Alexander-Arnold",
+    "defender2": "Matt Doherty",
+    "defender3": "Shane Duffy",
+    "defender4": "James Tomkins",
+    "defender5": "James Tarkowski",
+    "midfielder1": "Raheem Sterling",
+    "midfielder2": "Eden Hazard",
+    "midfielder3": "Bernardo Mota Veiga de Carvalho e Silva",
+    "midfielder4": "Aaron Ramsey",
+    "midfielder5": "Johann Berg Gudmundsson",
+    "forward1": "Aleksandar Mitrovic",
+    "forward2": "Alexandre Lacazette",
+    "forward3": "Ra\u00fal Jim\u00e9nez",
+    "gameweek": "7",
+    "score": "74"
+  }
+]

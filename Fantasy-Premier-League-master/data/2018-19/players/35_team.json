@@ -1,21 +1,21 @@
 [
   {
-    "goalkeeper1": "Ederson Santana de Moraes",
-    "goalkeeper2": "Jordan Pickford",
+    "goalkeeper1": "Jordan Pickford",
+    "goalkeeper2": "Kepa Arrizabalaga",
     "defender1": "Kurt Zouma",
     "defender2": "Sean Morrison",
     "defender3": "Aymeric Laporte",
-    "defender4": "Ben Mee",
-    "defender5": "James Tarkowski",
-    "midfielder1": "Mohamed Salah",
-    "midfielder2": "Eden Hazard",
-    "midfielder3": "Ryan Fraser",
-    "midfielder4": "Christian Eriksen",
-    "midfielder5": "Sadio Man\u00e9",
+    "defender4": "James Tarkowski",
+    "defender5": "Trent Alexander-Arnold",
+    "midfielder1": "Ryan Fraser",
+    "midfielder2": "Jordan Henderson",
+    "midfielder3": "Jordan Henderson",
+    "midfielder4": "Gerard Deulofeu",
+    "midfielder5": "Matt Ritchie",
     "forward1": "Chris Wood",
     "forward2": "Callum Wilson",
     "forward3": "Aleksandar Mitrovic",
     "gameweek": "35",
-    "score": "84"
+    "score": "85"
   }
 ]
